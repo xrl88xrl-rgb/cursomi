@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluación de Historia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Evaluación de Historia</h2>
+
+  <div class="pregunta">
+    <p>1. ¿En qué año comenzó la Segunda Guerra Mundial?</p>
+    <input type="radio" name="p1" value="1939"> 1939<br>
+    <input type="radio" name="p1" value="1945"> 1945<br>
+    <input type="radio" name="p1" value="1914"> 1914
+  </div>
+
+  <div class="pregunta">
+    <p>2. ¿Quién fue el líder de Alemania durante la guerra?</p>
+    <input type="radio" name="p2" value="Hitler"> Adolf Hitler<br>
+    <input type="radio" name="p2" value="Churchill"> Winston Churchill<br>
+    <input type="radio" name="p2" value="Stalin"> Joseph Stalin
+  </div>
+
+  <button onclick="corregir()">Enviar respuestas</button>
+  <p id="resultado"></p>
+  <p><a href="aula.html">Volver al aula</a></p>
+
+  <script>
+    function corregir() {
+      let puntos = 0;
+      if (document.querySelector('input[name="p1"]:checked')?.value === '1939') puntos++;
+      if (document.querySelector('input[name="p2"]:checked')?.value === 'Hitler') puntos++;
+
+      localStorage.setItem('resultadoHistoria', puntos);
+      document.getElementById('resultado').textContent = `Tu puntuación: ${puntos}/2`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula Virtual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="background-color: #01023f; display: flex; align-items: center; padding: 20px;">
+  <img src="img/logo.png" alt="Logo" style="width: 100px; height: 100px; margin-right: 20px;">
+  
+  <div style="text-align: center; flex-grow: 1;">
+    <h1 style="color: white; margin: 0;">Curso de Metodología de la Investigación</h1>
+ 
+    <h2>Área de Comentarios</h2>
+  </div>
+</header>
+
+
+  <nav>
+    <a href="inicio.html">Inicio</a>
+    <a href="aula.html">Módulos</a>
+     <a href="calificaciones.html">Calificaciones</a>
+    <a href="comentarios.html">Comentarios</a>
+    <a href="biblio.html">Bibliografía</a>
+
+    <a href="index.html">Salir</a>
+  </nav>
+ 
+  
+
+  <meta charset="UTF-8">
+  <title>Comentarios - Aula Virtual</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #01023f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      margin: 0;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #01023f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .comment {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .comment:last-child {
+      border-bottom: none;
+    }
+    .comment strong {
+      color: #01023f;
+    }
+    .no-comments {
+      text-align: center;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+   
+
+  <div class="container">
+    <h2>Deja tu comentario</h2>
+    <form id="commentForm">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" required>
+
+      <label for="comment">Comentario:</label>
+      <textarea id="comment" rows="4" required></textarea>
+
+      <button type="submit">Enviar Comentario</button>
+    </form>
+
+    <h2>Comentarios</h2>
+    <div id="commentsList">
+      <!-- Los comentarios se cargarán aquí -->
+    </div>
+  </div>
+
+  <script>
+    // Cargar comentarios al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      loadComments();
+    });
+
+    // Manejar el envío del formulario
+    document.getElementById('commentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const comment = document.getElementById('comment').value;
+
+      if (name && comment) {
+        addComment(name, comment);
+        document.getElementById('commentForm').reset();
+      }
+    });
+
+    // Función para agregar un comentario
+    function addComment(name, comment) {
+      const comments = getComments();
+      const newComment = {
+        name: name,
+        comment: comment,
+        date: new Date().toLocaleString()
+      };
+      comments.push(newComment);
+      saveComments(comments);
+      loadComments();
+    }
+
+    // Función para cargar y mostrar comentarios
+    function loadComments() {
+      const comments = getComments();
+      const commentsList = document.getElementById('commentsList');
+
+      if (comments.length === 0) {
+        commentsList.innerHTML = '<p class="no-comments">No hay comentarios aún. ¡Sé el primero en comentar!</p>';
+        return;
+      }
+
+      commentsList.innerHTML = '';
+      comments.forEach(function(comment) {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.innerHTML = `
+          <strong>${comment.name}</strong> - ${comment.date}<br>
+          <p>${comment.comment}</p>
+        `;
+        commentsList.appendChild(commentDiv);
+      });
+    }
+
+    // Función para obtener comentarios de localStorage
+    function getComments() {
+      const comments = localStorage.getItem('comments');
+      return comments ? JSON.parse(comments) : [];
+    }
+
+    // Función para guardar comentarios en localStorage
+    function saveComments(comments) {
+      localStorage.setItem('comments', JSON.stringify(comments));
+    }
+  </script>
+</body>
+</html>

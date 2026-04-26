@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen - Problema de Investigación</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+    }
+    header {
+      background-color: #01023f;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      margin-right: 20px;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+    }
+    header h2 {
+      color: aliceblue;
+      margin-top: 10px;
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 20px;
+      min-height: 400px;
+    }
+    footer {
+      background-color: #01023f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .options {
+      margin-left: 20px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="img/logo.png" alt="Logo">
+  <div style="text-align: center; flex-grow: 1;">
+    <h1>Curso de Metodología de la Investigación</h1>
+    <h2>Bienvenido, <span id="nombre"></span></h2>
+  </div>
+</header>
+
+<nav>
+  <a href="inicio.html">Inicio</a>
+  <a href="aula.html">Módulos</a>
+  <a href="comentarios.html">Comentarios</a>
+  <a href="calificaciones.html">Calificaciones</a>
+  <a href="biblio.html">Bibliografía</a>
+
+  <a href="index.html">Salir</a>
+</nav>
+
+<section>
+  <h2>Examen: Problema de Investigación</h2>
+  <p>Puedes repetir el examen hasta tres veces. Recuerda que solo se guardará la última nota.</p>
+  <form id="examForm">
+    <div class="question">
+      <p>1. ¿Qué es el problema de investigación?</p>
+      <div class="options">
+        <input type="radio" name="q1" value="a"> a) Una pregunta sin importancia<br>
+        <input type="radio" name="q1" value="b"> b) Una situación que requiere solución<br>
+        <input type="radio" name="q1" value="c"> c) Un método de análisis<br>
+        <input type="radio" name="q1" value="d"> d) Un resultado esperado
+      </div>
+    </div>
+    <div class="question">
+      <p>2. ¿Cuál es la función principal del planteamiento del problema?</p>
+      <div class="options">
+        <input type="radio" name="q2" value="a"> a) Definir el objetivo general<br>
+        <input type="radio" name="q2" value="b"> b) Delimitar el tema de estudio<br>
+        <input type="radio" name="q2" value="c"> c) Formular hipótesis<br>
+        <input type="radio" name="q2" value="d"> d) Recopilar datos
+      </div>
+    </div>
+    <div class="question">
+      <p>3. ¿Qué debe contener un buen planteamiento del problema?</p>
+      <div class="options">
+        <input type="radio" name="q3" value="a"> a) Justificación, objetivos y preguntas<br>
+        <input type="radio" name="q3" value="b"> b) Solo objetivos<br>
+        <input type="radio" name="q3" value="c"> c) Solo preguntas de investigación<br>
+        <input type="radio" name="q3" value="d"> d) Solo hipótesis
+      </div>
+    </div>
+    <div class="question">
+      <p>4. ¿Qué es una hipótesis en investigación?</p>
+      <div class="options">
+        <input type="radio" name="q4" value="a"> a) Una suposición sin base<br>
+        <input type="radio" name="q4" value="b"> b) Una afirmación que se puede probar<br>
+        <input type="radio" name="q4" value="c"> c) Un dato estadístico<br>
+        <input type="radio" name="q4" value="d"> d) Un objetivo general
+      </div>
+    </div>
+    <div class="question">
+      <p>5. ¿Cuál es la diferencia entre problema y pregunta de investigación?</p>
+      <div class="options">
+        <input type="radio" name="q5" value="a"> a) No hay diferencia<br>
+        <input type="radio" name="q5" value="b"> b) El problema es más amplio que la pregunta<br>
+        <input type="radio" name="q5" value="c"> c) La pregunta es más amplia que el problema<br>
+        <input type="radio" name="q5" value="d"> d) Son términos intercambiables
+      </div>
+    </div>
+    <div class="question">
+      <p>6. ¿Qué caracteriza a un problema de investigación bien formulado?</p>
+      <div class="options">
+        <input type="radio" name="q6" value="a"> a) Es ambiguo y general<br>
+        <input type="radio" name="q6" value="b"> b) Es claro, específico y relevante<br>
+        <input type="radio" name="q6" value="c"> c) Es muy complejo<br>
+        <input type="radio" name="q6" value="d"> d) No tiene relación con el tema
+      </div>
+    </div>
+    <div class="question">
+      <p>7. ¿Cuál es el propósito de delimitar el problema?</p>
+      <div class="options">
+        <input type="radio" name="q7" value="a"> a) Ampliar el alcance del estudio<br>
+        <input type="radio" name="q7" value="b"> b) Definir los límites y alcance del estudio<br>
+        <input type="radio" name="q7" value="c"> c) Evitar la formulación de hipótesis<br>
+        <input type="radio" name="q7" value="d"> d) Recopilar más datos
+      </div>
+    </div>
+    <div class="question">
+      <p>8. ¿Qué papel juega la justificación en el planteamiento del problema?</p>
+      <div class="options">
+        <input type="radio" name="q8" value="a"> a) Explica la importancia del estudio<br>
+        <input type="radio" name="q8" value="b"> b) Define los objetivos<br>
+        <input type="radio" name="q8" value="c"> c) Presenta los resultados<br>
+        <input type="radio" name="q8" value="d"> d) Describe la metodología
+      </div>
+    </div>
+    <div class="question">
+      <p>9. ¿Qué es una variable en el contexto del problema de investigación?</p>
+      <div class="options">
+        <input type="radio" name="q9" value="a"> a) Un elemento que puede cambiar y afectar el estudio<br>
+        <input type="radio" name="q9" value="b"> b) Un dato fijo<br>
+        <input type="radio" name="q9" value="c"> c) Un resultado esperado<br>
+        <input type="radio" name="q9" value="d"> d) Un método de análisis
+      </div>
+    </div>
+    <div class="question">
+      <p>10. ¿Por qué es importante formular correctamente el problema de investigación?</p>
+      <div class="options">
+        <input type="radio" name="q10" value="a"> a) Para facilitar la recolección de datos<br>
+        <input type="radio" name="q10" value="b"> b) Para orientar todo el proceso de investigación<br>
+        <input type="radio" name="q10" value="c"> c) Para evitar la formulación de hipótesis<br>
+        <input type="radio" name="q10" value="d"> d) No es importante
+      </div>
+    </div>
+    <button type="button" onclick="submitExam()">Enviar Examen</button>
+  </form>
+  <div id="result"></div>
+</section>
+
+<footer>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
+    <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+      Plataforma de Aprendizaje Virtual | Diseñado por Sander
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Check if user is logged in
+  const usuario = localStorage.getItem('usuario');
+  if (!usuario) {
+    window.location.href = 'index.html';
+  }
+
+  document.getElementById('nombre').textContent = usuario;
+
+  const key = 'problema';
+
+  function submitExam() {
+    let attempts = parseInt(localStorage.getItem('attempts_' + key + '_' + usuario)) || 0;
+    if (attempts >= 3) {
+      alert('Has alcanzado el límite de 3 intentos para este examen.');
+      return;
+    }
+
+    const answers = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'a',
+      q4: 'b',
+      q5: 'b',
+      q6: 'b',
+      q7: 'b',
+      q8: 'a',
+      q9: 'a',
+      q10: 'b'
+    };
+    let score = 0;
+    let total = Object.keys(answers).length;
+    for (let q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) {
+        score++;
+      }
+    }
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `Tu puntuación: ${score}/${total}`;
+    if (score === total) {
+      resultDiv.innerHTML += '<br>¡Excelente! Has aprobado el examen.';
+    } else if (score >= total * 0.7) {
+      resultDiv.innerHTML += '<br>Buen trabajo. Has aprobado.';
+    } else {
+      resultDiv.innerHTML += '<br>Necesitas estudiar más. No has aprobado.';
+    }
+    // Save to grades
+    let grades = JSON.parse(localStorage.getItem('grades_' + usuario)) || [];
+    let moduloName = 'Examen Problema';
+    let existingIndex = grades.findIndex(g => g.modulo === moduloName);
+    if (existingIndex !== -1) {
+      grades[existingIndex].calificacion = score;
+    } else {
+      grades.push({modulo: moduloName, calificacion: score});
+    }
+    localStorage.setItem('grades_' + usuario, JSON.stringify(grades));
+    // Save result
+    localStorage.setItem('exam_problema_' + usuario, score + '/' + total);
+    // Increment attempts
+    localStorage.setItem('attempts_' + key + '_' + usuario, attempts + 1);
+  }
+</script>
+</body>
+</html>

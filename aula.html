@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Aula Virtual | Metodología de la Investigación</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f2f5;
+      color: #1e2a3e;
+      line-height: 1.5;
+      font-size: 18px; /* BASE MÁS GRANDE */
+    }
+
+    /* HEADER MODERNO */
+    .header-modern {
+      background: linear-gradient(135deg, #01023f 0%, #0a0c5e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 20px 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border-bottom: 3px solid #ffb347;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      padding: 6px;
+      transition: transform 0.2s;
+    }
+
+    .header-text {
+      text-align: center;
+      flex: 1;
+    }
+
+    .header-text h1 {
+      color: white;
+      font-size: 2.2rem;    /* TÍTULO PRINCIPAL MÁS GRANDE */
+      letter-spacing: -0.3px;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .welcome-link {
+      text-decoration: none;
+    }
+
+    .welcome-name {
+      color: #ffdd99;
+      margin-top: 10px;
+      font-size: 1.4rem;    /* NOMBRE USUARIO MÁS GRANDE */
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    /* NAV BAR - LETRAS GRANDES Y ESPACIOS */
+    .nav-modern {
+      background: #ffffff;
+      padding: 12px 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #e0e7ef;
+    }
+
+    .nav-modern a {
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 1.1rem;    /* MENÚ MÁS GRANDE */
+      text-decoration: none;
+      color: #01023f;
+      border-radius: 50px;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+      background: #f8faff;
+    }
+
+    .nav-modern a:hover {
+      background: #01023f;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    .contenido-wrapper {
+      max-width: 1400px;
+      margin: 30px auto;
+      padding: 0 25px;
+    }
+
+    /* TARJETAS DE MÓDULOS (MODERNAS Y VISUALES) */
+    .modulo-card {
+      background: #ffffff;
+      border-radius: 32px;
+      margin-bottom: 48px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .modulo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .modulo-header {
+      background: linear-gradient(115deg, #f8faff 0%, #ffffff 100%);
+      padding: 24px 32px 16px 32px;
+      border-bottom: 2px solid #e9edf4;
+    }
+
+    .modulo-header h3 {
+      font-size: 2rem;      /* NÚMERO DE MÓDULO GRANDE */
+      color: #01023f;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .badge-modulo {
+      background: #ffb34720;
+      color: #c45c00;
+      padding: 6px 16px;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-left: 12px;
+    }
+
+    .modulo-body {
+      padding: 24px 32px 32px 32px;
+    }
+
+    .modulo-body h2 {
+      font-size: 1.6rem;    /* subtítulos de cada módulo más grandes */
+      margin-bottom: 16px;
+    }
+
+    /* RECURSOS - BOTONES/LINKS MÁS LEGIBLES */
+    .recursos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 24px 0 24px 0;
+    }
+
+    .recurso-link {
+      background: #f1f4fa;
+      border-radius: 60px;
+      padding: 10px 24px;
+      text-decoration: none;
+      color: #01023f;
+      font-weight: 600;
+      font-size: 1rem;      /* enlaces de recursos legibles */
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #e2e8f2;
+    }
+
+    .recurso-link:hover {
+      background: #01023f;
+      color: white;
+      border-color: #01023f;
+      transform: scale(1.02);
+    }
+
+    /* CAJA DE EVALUACIÓN */
+    .eval-box {
+      background: #fef7e0;
+      border-left: 6px solid #ffb347;
+      padding: 22px 28px;
+      border-radius: 28px;
+      margin: 28px 0 24px 0;
+      font-size: 1rem;
+    }
+
+    .eval-box h4 {
+      font-size: 1.4rem;
+      color: #2c3e66;
+      margin-bottom: 14px;
+    }
+
+    .eval-box p, .eval-box li {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .btn-subir {
+      background: linear-gradient(95deg, #01023f, #1f2b8c);
+      border: none;
+      color: white;
+      padding: 14px 32px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin: 12px 0 16px 0;
+    }
+
+    .btn-subir:hover {
+      background: linear-gradient(95deg, #1f2b8c, #01023f);
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .consulta-docente {
+      background: #eef3fc;
+      border-radius: 24px;
+      padding: 20px 26px;
+      margin-top: 28px;
+      border: 1px solid #cbdff2;
+      font-size: 1rem;
+    }
+
+    .consulta-docente h4 {
+      color: #01023f;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    .consulta-docente p {
+      font-size: 1rem;
+    }
+
+    hr {
+      margin: 24px 0;
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, #ddd, transparent);
+    }
+
+    footer {
+      background: #01023f;
+      color: #f0f2f5;
+      text-align: center;
+      padding: 32px 20px;
+      margin-top: 60px;
+      font-size: 1rem;
+      border-top: 5px solid #ffb347;
+    }
+
+    /* responsive */
+    @media (max-width: 760px) {
+      body {
+        font-size: 16px;
+      }
+      .header-modern {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .nav-modern a {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+      }
+      .modulo-header h3 {
+        font-size: 1.6rem;
+      }
+      .modulo-body {
+        padding: 20px;
+      }
+      .contenido-wrapper {
+        padding: 0 16px;
+      }
+      .recurso-link {
+        font-size: 0.9rem;
+        padding: 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header-modern">
+  <div class="logo-area">
+    <img src="img/logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/90?text=Logo'">
+  </div>
+  <div class="header-text">
+    <h1>📖 Curso de Metodología de la Investigación</h1>
+    <a href="bienvenida.html" class="welcome-link">
+      <div class="welcome-name">✨ Bienvenido, <span id="nombre"></span> ✨</div>
+    </a>
+  </div>
+  <div style="width: 90px;"></div>
+</header>
+
+<nav class="nav-modern">
+  <a href="bienvenida.html">🏠 Inicio</a>
+  <a href="aula.html">📚 Módulos</a>
+  <a href="calificaciones.html">⭐ Calificaciones</a>
+  <a href="comentarios.html">💬 Comentarios</a>
+  <a href="biblio.html">📖 Bibliografía</a>
+  <a id="usuarios-link" href="usuarios.html" style="display:none;">👥 Usuarios</a>
+  <a href="index.html">🚪 Salir</a>
+</nav>
+
+<div class="contenido-wrapper" id="contenido">
+  <!-- Contenido dinámico: todos los módulos -->
+</div>
+
+<footer>
+  <div>
+    <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
+    <p style="margin-top: 8px; font-size: 0.9rem; opacity: 0.8;">Plataforma de Aprendizaje Virtual | Diseñado por Sander</p>
+  </div>
+</footer>
+
+<button id="backToTop" style="position:fixed; bottom:25px; right:25px; background:#01023f; color:white; border:none; border-radius:50px; width:55px; height:55px; font-size:30px; cursor:pointer; box-shadow:0 8px 18px rgba(0,0,0,0.25); z-index:1000; display:none; transition:0.2s;">↑</button>
+
+<script>
+  // Mostrar nombre del usuario
+  document.getElementById("nombre").textContent = localStorage.getItem("usuario") || "Invitado";
+
+  // Admin: mostrar enlace usuarios
+  if (localStorage.getItem('role') === 'admin') {
+    document.getElementById('usuarios-link').style.display = 'inline-block';
+  }
+
+  // Función que genera TODOS los módulos VISIBLES con textos más grandes
+  function mostrarModulosCompletos() {
+    const contenedor = document.getElementById("contenido");
+    let html = `<div style="margin-bottom: 30px;"><h2 style="font-size: 2.2rem; color: #01023f; border-left: 10px solid #ffb347; padding-left: 25px;">📌 Módulos del Curso</h2><p style="color:#2c3e66; margin: 12px 0 0 35px; font-size:1.1rem;">Recursos, lecturas, evaluaciones y consulta docente.</p></div>`;
+
+    // MÓDULO 1
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>📚 Módulo 1 <span class="badge-modulo">Conceptos básicos</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background: #1b5e20; color: white; padding: 8px 22px; border-radius: 60px; display: inline-block; font-size: 1.5rem;">🔍 Conceptos básicos en Metodología de investigación</h2>
+          <div class="recursos-grid">
+            <a href="libros/metodologia1.pdf" class="recurso-link">📘 Fundamentos científicos</a>
+            <a href="libros/clase%201%20.pdf" class="recurso-link">📑 Introducción a la Metodología</a>
+            <a href="libros/Qué%20es%20y%20para%20qué%20sirve%20la%20introducción.pdf" class="recurso-link">✍️ Cómo hacer la introducción</a>
+            <a href="clases/clase1.pdf" class="recurso-link">🎥 Conferencia 1 Introductoria</a>
+          </div>
+          <div class="eval-box">
+            <h4>📝 Evaluación Modular</h4>
+            <p>Elabore un <strong>ensayo</strong> sobre uno de los siguientes temas:</p>
+            <ul style="margin-left: 26px; margin-top: 10px;">
+              <li>• Ética en la Investigación</li>
+              <li>• La investigación científica como proceso</li>
+              <li>• Mapa conceptual sobre metodología</li>
+            </ul>
+          </div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 2 - PROBLEMA E HIPÓTESIS
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>📚 Módulo 2 <span class="badge-modulo">Problema e Hipótesis</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">🎯 El problema e hipótesis de la Investigación</h2>
+          <div class="recursos-grid">
+            <a href="investigacion1.html" class="recurso-link">🧠 Fundamentos del problema</a>
+            <a href="libros/problema%20capitulo1.pdf" class="recurso-link">📖 El problema y sus partes</a>
+            <a href="libros/EBOOK%20PLANTEAMIENTO%20DEL%20PROBLEMA.pdf" class="recurso-link">📘 Planteamiento del problema</a>
+            <a href="libros/EL%20PROBLEMA%20DE%20INVESTIGACIÓN.html" class="recurso-link">🌐 El problema (web)</a>
+            <a href="libros/formular%20problema.pdf" class="recurso-link">📌 Formular el problema</a>
+            <a href="clases/hipotesisproblema.pdf" class="recurso-link">🎤 Conferencia 2: Problema e Hipótesis</a>
+            <a href="problema.html" class="recurso-link">📋 Test 1 - Evaluación rápida</a>
+          </div>
+          <div class="eval-box"><h4>📝 Evaluación</h4><p>Seleccione una opción:</p><p>✔️ Documento Word con su tema de investigación, objeto, campo y problema.<br>✔️ Mapa conceptual del método científico.</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 3 - MARCO TEÓRICO
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>📚 Módulo 3 <span class="badge-modulo">Marco Teórico</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📖 El marco teórico</h2>
+          <div class="recursos-grid">
+            <a href="libros/marco%20teorico%2012.pdf" class="recurso-link">📑 El marco teórico</a>
+            <a href="libros/Marco%20teorico%20muy%20bueno%20.pdf" class="recurso-link">📘 Fundamentos avanzados</a>
+            <a href="libros/sampieri.pdf" class="recurso-link">🎓 Sampieri - Marco teórico</a>
+            <a href="clases/marco.pdf" class="recurso-link">🎥 Conferencia 3: Marco Teórico</a>
+          </div>
+          <div class="eval-box"><h4>📌 Evaluación</h4><p>Diseñe un diagrama con las partes fundamentales del marco teórico basado en su investigación.</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 4 - OBJETIVOS (activado)
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>🎯 Módulo 4 <span class="badge-modulo">Objetivos e Hipótesis</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">Objetivos de la investigación</h2>
+          <div class="recursos-grid">
+            <a href="https://atlasti.com/es/research-hub/objetivos-investigacion" class="recurso-link">📌 Objetivos de la investigación</a>
+            <a href="https://www.redalyc.org/pdf/7217/721778106027.pdf" class="recurso-link">📊 Objetivos Base </a>
+            
+            <a href="https://drive.google.com/file/d/1oi6q1Dn5J5WauzJgeLHpC_tx41wWX6qp/view?usp=drive_link" class="recurso-link">🎤 Conferencia 4: Objetivos</a>
+          </div>
+          <div class="eval-box"><h4>📝 Evaluación</h4><p>✅ Seleccione los enunciados correctos (<a href="objetivos.html" style="font-weight:bold;">ir a test</a>)<br>✅ Formule 3 hipótesis para su tema y defina variables.</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👩‍🏫 Consulta docente</h4><p><strong>Dra.C Enia Ramón Musibay</strong><br>📧 <a href="mailto:musibay576@gmail.com">musibay576@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 5 - DISEÑO METODOLÓGICO
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>📐 Módulo 5 <span class="badge-modulo">Diseño Metodológico</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📊 Tipos de estudio, población, muestra</h2>
+          <div class="recursos-grid">
+            <a href="libros/html/Tipos%20de%20estudios%20bueno.html" class="recurso-link">🔬 Tipos de estudios</a>
+            <a href="libros/html/Tipos%20de%20estudios%20observacionales%20_%20Noticia%20de%20Bioclever_%20Blog%20de%20Bioclever.html" class="recurso-link">👁️ Estudios observacionales</a>
+            <a href="libros/Clasificacion-de-los-tipos-de-estudio.pdf" class="recurso-link">📂 Clasificación de estudios</a>
+            <a href="libros/sampieri.pdf" class="recurso-link">🧪 Tipos de estudio Libro Sampieri</a>
+            <a href="variables.html" class="recurso-link">📈 Variables Bases</a>
+            <a href="libros/variables1.pdf" class="recurso-link">📈 Variables estadísticas 1</a>
+            <a href="libros/variables2.pdf" class="recurso-link">📈 Variables estadísticas 2</a>
+            
+            <a href="https://drive.google.com/file/d/1v33-aiD3ugZ4-9wq2ijZvJ62jQ-IDEOS/view?usp=drive_link" class="recurso-link">🎥 Conferencia 5: Diseño Metodológico</a>
+          </div>
+          <div class="eval-box"><h4>📌 Evaluación</h4><p>Elabore el diseño metodológico: tipo de estudio, población/muestra, variables y consideraciones éticas.</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 6 - TÉCNICAS DE RECOLECCIÓN
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>📋 Módulo 6 <span class="badge-modulo">Tecnicas para recolección de datos</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📝 Técnicas e instrumentos</h2>
+          <div class="recursos-grid">
+            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/88.%20Tecnicas%20e%20instrumentos%20recolecci%C3%B3n%20de%20datos.pdf" class="recurso-link">📘 Técnicas e instrumentos</a>
+            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/T%C3%A9cnicas-para-investigar-2-Brujas-2014-pdf.pdf" class="recurso-link">📖 Guía práctica</a>
+            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/URL_03_BAS01.pdf" class="recurso-link">📄 Instrumentos validados</a>
+            <a href="RECOLECCION%20INFOREMACION/PLANILLA%20RECOLECCI%C3%93N/a08v13n1.pdf" class="recurso-link">📊 Planillas de recolección</a>
+            <a href="https://drive.google.com/file/d/1UnpxQ6LYBYUBlrnzL7WirbiSZBJewRWa/view?usp=drive_link" class="recurso-link">🎤 Conferencia 6: Técnicas</a>
+          </div>
+          <div class="eval-box"><h4>📌 Evaluación</h4><p>Diseñe un instrumento de recolección de datos (encuesta, entrevista, guía de observación).</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👩‍🏫 Consulta docente</h4><p><strong>Dra.C Enia Ramón Musibay</strong><br>📧 <a href="mailto:musibay576@gmail.com">musibay576@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 7 - RESULTADOS
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>📊 Módulo 7 <span class="badge-modulo">Análisis y resultados</span></h3></div>
+        <div class="modulo-body">
+          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📈 Presentación de Resultados</h2>
+          <div class="recursos-grid">
+            <a href="resultados.html" class="recurso-link">📘 Comunicar resultados</a>
+            <a href="libros/sampieri.pdf" class="recurso-link">📘 Métodos Sampieri</a>
+            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/T%C3%A9cnicas-para-investigar-2-Brujas-2014-pdf.pdf" class="recurso-link">🔍 Análisis cuali-cuantitativo</a>
+            
+          </div>
+          <div class="eval-box"><h4>💡 Evaluación</h4><p>Elabore un plan de análisis de datos: técnicas, herramientas y presentación de resultados.</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
+          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
+        </div>
+      </div>
+    `;
+
+    // MÓDULO 8 - IA E INVESTIGACIÓN
+    //
+
+
+    // PROYECTO FINAL
+    html += `
+      <div class="modulo-card">
+        <div class="modulo-header"><h3>🏆 Proyecto Final <span class="badge-modulo">Informe de Investigación</span></h3></div>
+        <div class="modulo-body">
+          <div class="recursos-grid">
+            <a href="libros/Par.pdf" class="recurso-link">📄 Guía informe final</a>
+          </div>
+          <div class="eval-box"><h4>🎯 Trabajo Final</h4><p>Presente el borrador completo de su proyecto de investigación (estructura completa según guía).</p></div>
+          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación Final</button>
+          <div class="consulta-docente"><h4>🧑‍🏫 Tutoría final</h4><p>Consulte con su profesor asignado para revisión del informe final.</p></div>
+        </div>
+      </div>
+    `;
+
+    contenedor.innerHTML = html;
+  }
+
+  window.onload = function () {
+    mostrarModulosCompletos();
+  };
+
+  // Back to top
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 200) {
+      backToTop.style.display = "flex";
+      backToTop.style.alignItems = "center";
+      backToTop.style.justifyContent = "center";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio - Aula Virtual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="background-color: #01023f; display: flex; align-items: center; padding: 20px;">
+  <img src="img/logo.png" alt="Logo" style="width: 100px; height: 100px; margin-right: 20px;">
+  
+  <div style="text-align: center; flex-grow: 1;">
+    <h1 style="color: white; margin: 0;">Curso de Metodología de la Investigación</h1>
+   <a href="bienvenida.html"> <h2 style="color: aliceblue; margin-top: 10px;">Bienvenido, <span id="nombre"></span></h2></a>
+  </div>
+</header>
+
+  <nav>
+    <a href="inicio.html">Inicio</a>
+    <a href="aula.html">Módulos</a>
+        <a href="calificaciones.html">Calificaciones</a>
+    <a href="comentarios.html">Comentarios</a>
+    <a href="biblio.html">Bibliografía</a>
+
+    <a href="index.html">Salir</a>
+  </nav>
+
+  <section id="contenido">
+    <!-- Default content will be replaced by JavaScript -->
+  </section>
+
+  <script>
+    document.getElementById('nombre').textContent = localStorage.getItem('usuario') || 'Invitado';
+
+    // Show inicio by default on page load
+    window.onload = function() {
+      mostrar('inicio');
+    };
+
+    function mostrar(seccion) {
+      const contenido = document.getElementById('contenido');
+      if (seccion === 'inicio') {
+        contenido.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 15px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h2 style="color: #01023f; font-size: 2.5em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🏠 Inicio</h2>
+            <p style="font-size: 1.2em; color: #333; margin-bottom: 30px; line-height: 1.6;">Bienvenido a tu aula virtual del Curso de Metodología de la Investigación</p>
+            <div style="background: white; padding: 30px; border-radius: 10px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <h3 style="color: #1b5e20; margin-bottom: 15px;">📚 ¿Qué encontrarás en este curso?</h3>
+              <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+                <li>✅ Conceptos fundamentales de la investigación científica</li>
+                <li>✅ Metodologías y técnicas de investigación</li>
+                <li>✅ Herramientas digitales aplicadas a la investigación</li>
+                <li>✅ Recursos y materiales de apoyo</li>
+                <li>✅ Evaluaciones y seguimiento de tu progreso por docentes de experiencia </li>
+              </ul>
+            </div>
+            <div style="margin-top: 30px;">
+              <p style="color: #666; font-style: italic;">Selecciona "Módulos" en el menú para comenzar tu aprendizaje</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+  <footer style="background-color: #01023f; color: white; text-align: center; padding: 20px; margin-top: 40px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
+
+      <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+        Plataforma de Aprendizaje Virtual | Diseñado por Sander
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

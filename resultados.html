@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Cómo presentar los resultados de una tesis | Guía práctica</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      background: #f4f7fc;
+      color: #1a2a3f;
+      line-height: 1.5;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b2b3f 0%, #1c4e6e 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 6px solid #f5a623;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 850px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+      overflow: hidden;
+      transition: transform 0.2s;
+      border: 1px solid #e2eaf1;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card-header {
+      background: #fefaf0;
+      padding: 20px 28px;
+      border-left: 8px solid #f5a623;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #0b2b3f;
+    }
+
+    .card-body {
+      padding: 28px 34px;
+      font-size: 1.05rem;
+    }
+
+    .box-ejemplo {
+      background: #eef3fc;
+      border-radius: 20px;
+      padding: 20px 26px;
+      margin: 20px 0;
+      border-left: 5px solid #2c7da0;
+    }
+
+    .box-bueno {
+      background: #e6f7e6;
+      border-left: 5px solid #2e7d32;
+      padding: 18px 24px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    .box-malo {
+      background: #ffefef;
+      border-left: 5px solid #c62828;
+      padding: 18px 24px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    .checklist {
+      background: #f9f3e0;
+      border-radius: 24px;
+      padding: 20px 28px;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    th {
+      background: #1f4e6e;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      border: 1px solid #dce5ed;
+      padding: 12px;
+      vertical-align: top;
+    }
+
+    .btn-pdf {
+      background: #f5a623;
+      border: none;
+      color: #1e2a3a;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 60px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-pdf:hover {
+      background: #e59410;
+      transform: scale(1.02);
+    }
+
+    footer {
+      background: #0b2b3f;
+      color: #cbdbe2;
+      text-align: center;
+      padding: 28px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 1.8rem; }
+      .card-header { font-size: 1.4rem; }
+      .card-body { padding: 20px; }
+      td { display: block; border: none; border-bottom: 1px solid #ddd; }
+      td:before { content: attr(data-label); font-weight: bold; display: inline-block; width: 130px; }
+      th { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📊 Cómo presentar los resultados de una tesis</h1>
+  <p>Estrategias concretas, ejemplos prácticos y estructura profesional para redactar el capítulo de resultados</p>
+  <div style="margin-top: 16px;">📌 Guía paso a paso | Metodología de la Investigación</div>
+</div>
+
+<div class="container">
+
+  <!-- 1. Introducción: ¿Qué significa "presentar resultados"? -->
+  <div class="card">
+    <div class="card-header">🎯 1. ¿Qué significa "presentar resultados"?</div>
+    <div class="card-body">
+      <p>Presentar resultados es <strong>comunicar los hallazgos</strong> de tu investigación de manera clara, ordenada y objetiva. No se trata solo de poner tablas y gráficos, sino de <strong>guiar al lector</strong> para que entienda qué encontraste en relación con tus objetivos e hipótesis.</p>
+      <div class="box-ejemplo">
+        <strong>📌 Recuerda:</strong> En el capítulo de resultados <strong>NO se interpretan las causas</strong> (eso va en la discusión). Aquí solo se <strong>describen</strong> los datos: "el grupo X obtuvo un promedio de 85", "el 60% de los participantes respondió que...".
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Estructura recomendada para el capítulo -->
+  <div class="card">
+    <div class="card-header">📐 2. Estructura recomendada (organiza por objetivos)</div>
+    <div class="card-body">
+      <p>La mejor manera de presentar resultados es seguir el orden de tus <strong>objetivos específicos</strong> o <strong>hipótesis</strong>.</p>
+      <div class="box-ejemplo">
+        <strong>Ejemplo de estructura:</strong><br>
+        4.1. Caracterización de la muestra (edad, género, profesión)<br>
+        4.2. Resultados relacionados con el Objetivo específico 1<br>
+        4.3. Resultados relacionados con el Objetivo específico 2<br>
+        4.4. Pruebas estadísticas complementarias<br>
+        4.5. Síntesis de hallazgos principales
+      </div>
+      <p>Cada sección debe comenzar con una frase que recuerde al lector qué objetivo se está respondiendo.</p>
+    </div>
+  </div>
+
+  <!-- 3. Cómo redactar resultados (verbos y estilo) -->
+  <div class="card">
+    <div class="card-header">✍️ 3. Cómo redactar resultados: frases y verbos clave</div>
+    <div class="card-body">
+      <p>Usa un lenguaje descriptivo, neutral y preciso. Aquí tienes verbos recomendados:</p>
+      <ul style="margin-left: 28px; columns: 2; margin-bottom: 20px;">
+        <li>• Se observó que...</li>
+        <li>• Los datos muestran...</li>
+        <li>• Se encontró una diferencia de...</li>
+        <li>• El promedio fue...</li>
+        <li>• Se identificó una correlación de...</li>
+        <li>• El porcentaje de... alcanzó...</li>
+        <li>• En comparación con..., se evidenció...</li>
+      </ul>
+      
+      <div class="box-bueno">
+        <strong>✅ Ejemplo BIEN redactado:</strong><br>
+        "En la Tabla 2 se presentan los puntajes promedio. El grupo experimental obtuvo una media de 84.3 (DE=6.2), mientras que el grupo control alcanzó 72.1 (DE=8.4). La diferencia entre grupos fue estadísticamente significativa (t(58)=4.12, p=0.001)."
+      </div>
+      
+      <div class="box-malo">
+        <strong>❌ Ejemplo MAL redactado (interpreta o juzga):</strong><br>
+        "El grupo experimental tuvo mejores resultados porque los estudiantes se esforzaron más. Esto demuestra que el método funciona muy bien."
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Cómo presentar tablas y gráficos -->
+  <div class="card">
+    <div class="card-header">📊 4. Presentación de tablas y gráficos (normas prácticas)</div>
+    <div class="card-body">
+      <p>Toda tabla o figura debe ser <strong>autocomprensible</strong> y estar <strong>referenciada en el texto</strong> antes de aparecer.</p>
+      
+      <table>
+        <thead><tr><th>Tipo de dato</th><th>Gráfico recomendado</th><th>Qué evitar</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Tipo de dato">Comparación de categorías</td><td data-label="Recomendación">Gráfico de barras</td><td data-label="Evitar">Gráficos 3D o efectos decorativos</td></tr>
+          <tr><td data-label="Tipo de dato">Evolución en el tiempo</td><td data-label="Recomendación">Gráfico de líneas</td><td data-label="Evitar">Ejes sin etiquetar</td></tr>
+          <tr><td data-label="Tipo de dato">Proporciones (pocas categorías)</td><td data-label="Recomendación">Gráfico circular (máx 5 categorías)</td><td data-label="Evitar">Porciones muy pequeñas ilegibles</td></tr>
+          <tr><td data-label="Tipo de dato">Distribución de una variable</td><td data-label="Recomendación">Histograma o diagrama de caja</td><td data-label="Evitar">Sin título o sin unidades</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box-ejemplo">
+        <strong>📌 Regla fundamental:</strong> "Verbaliza el hallazgo principal de cada tabla/figura".<br>
+        ❌ No basta con decir "ver Tabla 3".<br>
+        ✅ Hay que decir: "Como se muestra en la Tabla 3, el 78% de los participantes reportó..."
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Ejemplo concreto de redacción de resultados -->
+  <div class="card">
+    <div class="card-header">📝 5. Ejemplo real: cómo presentar resultados paso a paso</div>
+    <div class="card-body">
+      <p><strong>Caso:</strong> Investigación sobre "Efecto del uso de flashcards en el aprendizaje de vocabulario".</p>
+      <div class="box-bueno">
+        <strong>📄 Redacción profesional del capítulo de resultados:</strong><br><br>
+        <strong>5.1. Descripción de la muestra</strong><br>
+        "Participaron 62 estudiantes de inglés nivel intermedio, con edades entre 18 y 35 años (M=22.4, DE=3.1). El 58% fueron mujeres y el 42% hombres."<br><br>
+        
+        <strong>5.2. Resultados según objetivo: comparar grupos</strong><br>
+        "La Tabla 1 muestra las medias post-test. El grupo experimental (flashcards) obtuvo una media de 18.6 (DE=2.1) sobre 20 puntos, mientras que el grupo control alcanzó 14.2 (DE=2.8). La prueba t de Student indicó diferencias significativas a favor del grupo experimental (t(60)=6.73, p&lt;0.001, d=1.52)."<br><br>
+
+        <strong>5.3. Resultados complementarios</strong><br>
+        "El 92% de los estudiantes del grupo experimental reportó una percepción positiva sobre la herramienta, frente al 34% del grupo control (Tabla 2)."
+      </div>
+      <p>Observa que <strong>no se dice</strong> "por lo tanto las flashcards son mejores" (eso va en discusión). Solo se describen los números y las diferencias encontradas.</p>
+    </div>
+  </div>
+
+  <!-- 6. Consejos para resultados cualitativos -->
+  <div class="card">
+    <div class="card-header">📖 6. Cómo presentar resultados en investigación cualitativa</div>
+    <div class="card-body">
+      <p>En estudios cualitativos (entrevistas, grupos focales), los resultados se organizan por <strong>categorías o temas emergentes</strong>. Cada categoría debe incluir:</p>
+      <ul style="margin-left: 28px; margin-bottom: 20px;">
+        <li>✔️ Una descripción de la categoría.</li>
+        <li>✔️ Citas textuales representativas de los participantes (codificadas como E1, E2...).</li>
+        <li>✔️ Interpretación mínima (lo esencial, lo profundo va a discusión).</li>
+      </ul>
+      <div class="box-ejemplo">
+        <strong>📌 Ejemplo de resultado cualitativo bien presentado:</strong><br><br>
+        "<strong>Categoría 1: Percepción sobre la carga laboral</strong><br>
+        La mayoría de los docentes coincidió en que la cantidad de tareas administrativas afecta su tiempo de descanso. Un participante señaló: <em>'Termino tan agotado que no me queda energía para preparar bien mis clases'</em> (E3, párr. 12). Otro docente expresó: <em>'A veces siento que trabajo más horas de las que debería'</em> (E7, párr. 8)."
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Errores comunes al presentar resultados -->
+  <div class="card">
+    <div class="card-header">⚠️ 7. Errores frecuentes que debes evitar</div>
+    <div class="card-body">
+      <ul style="margin-left: 28px;">
+        <li><strong>❌ Mezclar resultados con discusión:</strong> No digas "esto demuestra que…" o "esto ocurre porque…" reserva eso para el siguiente capítulo.</li>
+        <li><strong>❌ Tablas o gráficos sin comentario:</strong> Cada elemento visual debe ser mencionado y explicado en el texto.</li>
+        <li><strong>❌ Datos incompletos u omitir hallazgos negativos:</strong> Reporta también lo que NO fue significativo o aquello que contradice tus hipótesis.</li>
+        <li><strong>❌ Usar demasiados decimales o formatos confusos:</strong> Dos decimales son suficientes. Revisa consistencia.</li>
+        <li><strong>❌ No responder a los objetivos:</strong> Cada objetivo debe tener una sección donde se presenten los resultados que lo responden.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Checklist para antes de entregar -->
+  <div class="card">
+    <div class="card-header">✅ 8. Checklist: ¿Tu capítulo de resultados está listo?</div>
+    <div class="card-body">
+      <div class="checklist">
+        <p>✔️ ¿Cada resultado responde a un objetivo o hipótesis específica?</p>
+        <p>✔️ ¿Todas las tablas y figuras tienen título descriptivo y están numeradas?</p>
+        <p>✔️ ¿Cada tabla/figura es mencionada en el texto y se explica su hallazgo principal?</p>
+        <p>✔️ ¿Usaste un lenguaje descriptivo (no interpretativo)?</p>
+        <p>✔️ ¿Reportaste también resultados no significativos o inesperados?</p>
+        <p>✔️ ¿Separaste claramente los resultados cuantitativos de los cualitativos?</p>
+        <p>✔️ ¿Las medidas estadísticas están correctamente expresadas (M, DE, p valor)?</p>
+        <p>✔️ ¿Incluiste una breve síntesis al final del capítulo?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Frases útiles para empezar a redactar -->
+  <div class="card">
+    <div class="card-header">📌 9. Banco de frases útiles para redactar resultados</div>
+    <div class="card-body">
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"En la Tabla X se observa que..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"Los datos indican una diferencia de..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"El promedio general fue de..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"Se encontró una correlación positiva entre..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"El porcentaje de participantes que..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"En relación con el objetivo 1, se halló que..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"Como se muestra en la Figura 2..."</span>
+        <span style="background:#eef2fa; padding: 8px 16px; border-radius: 30px;">"No se registraron diferencias significativas entre..."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Exportar a PDF -->
+  <div class="card">
+    <div class="card-header">🖨️ Guardar esta guía como PDF</div>
+    <div class="card-body">
+      <p>Puedes guardar este documento completo como PDF para consultarlo mientras redactas tu tesis.</p>
+      <button class="btn-pdf" id="exportarPDF">
+        📄 Imprimir / Guardar como PDF
+      </button>
+      <p style="margin-top: 12px; font-size: 0.85rem;">*Al hacer clic, elige "Guardar como PDF" en el destino de impresión.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>📘 Guía: Cómo presentar los resultados de una tesis | Estrategias prácticas para estudiantes de investigación</p>
+  <p>© 2025 Metodología de la Investigación — Material de apoyo académico</p>
+</footer>
+
+<script>
+  // Hacer las tablas responsivas con data-label
+  document.querySelectorAll('table').forEach(table => {
+    const headers = [];
+    table.querySelectorAll('th').forEach((th, i) => {
+      headers[i] = th.innerText;
+    });
+    table.querySelectorAll('tbody tr').forEach(row => {
+      row.querySelectorAll('td').forEach((td, idx) => {
+        if (headers[idx]) td.setAttribute('data-label', headers[idx]);
+      });
+    });
+  });
+
+  // Botón para exportar a PDF (usando print)
+  const btn = document.getElementById('exportarPDF');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Estilos para impresión
+  const style = document.createElement('style');
+  style.textContent = `@media print { .btn-pdf, #exportarPDF { display: none; } body { background: white; } .card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; } .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }`;
+  document.head.appendChild(style);
+</script>
+</body>
+</html>

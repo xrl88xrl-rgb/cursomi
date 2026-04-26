@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Login | Metodología de la Investigación</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e8eef4 0%, #d0dbe9 100%);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(#2c3e66 0.8px, transparent 0.8px);
+            background-size: 28px 28px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .login-container {
+            max-width: 1200px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .hero-section {
+            background: linear-gradient(145deg, #0b2b3f 0%, #123e56 100%);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::after {
+            content: "🔬";
+            font-size: 18rem;
+            position: absolute;
+            bottom: -40px;
+            right: -30px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .badge-curso {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(2px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            width: fit-content;
+            margin-bottom: 2rem;
+            border: 0.5px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-section h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
+
+        .hero-section h1 span {
+            font-weight: 400;
+            font-style: italic;
+            border-left: 3px solid #ffd966;
+            padding-left: 0.75rem;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.85;
+            margin: 1.5rem 0 2rem;
+            max-width: 90%;
+            font-weight: 300;
+        }
+
+        .quote {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+        }
+
+        .quote-author {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            opacity: 0.7;
+            font-style: normal;
+            letter-spacing: 0.5px;
+        }
+
+        .form-section {
+            background: white;
+            padding: 2.5rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0b2b3f;
+            letter-spacing: -0.5px;
+        }
+
+        .form-header p {
+            color: #5b6e8c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #92a3bd;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            pointer-events: none;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: #fefefe;
+            transition: all 0.25s ease;
+            outline: none;
+            color: #1e2f44;
+        }
+
+        .input-group input:focus {
+            border-color: #2c7da0;
+            box-shadow: 0 4px 12px rgba(44, 125, 160, 0.15);
+            background: #ffffff;
+        }
+
+        .input-group input:focus + i {
+            color: #2c7da0;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0.5rem 0 1.8rem;
+            font-size: 0.85rem;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #3f5575;
+            cursor: pointer;
+        }
+
+        .checkbox input {
+            width: 1rem;
+            height: 1rem;
+            accent-color: #2c7da0;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #2c7da0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .forgot-link:hover {
+            color: #1f5e7a;
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            background: #0b2b3f;
+            color: white;
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .btn-login:hover {
+            background: #1f4e6e;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -12px rgba(11, 43, 63, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(1px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.8rem 0 1.5rem;
+            color: #a0b3ce;
+            font-size: 0.75rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e2edf2;
+        }
+        .divider::before { margin-right: 1rem; }
+        .divider::after { margin-left: 1rem; }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .social-btn {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 0.7rem;
+            border-radius: 1.2rem;
+            width: 48px;
+            text-align: center;
+            color: #3e5a7d;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .social-btn:hover {
+            background: #edf2f7;
+            border-color: #cbd5e1;
+            color: #0b2b3f;
+            transform: translateY(-2px);
+        }
+
+        .register-prompt {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #5c7392;
+        }
+        .register-prompt a {
+            color: #2c7da0;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .register-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 780px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                border-radius: 1.5rem;
+            }
+            .hero-section {
+                text-align: center;
+                padding: 2rem;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .badge-curso {
+                margin: 0 auto 1.5rem auto;
+            }
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .form-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem;
+            }
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="hero-section">
+        <div class="badge-curso">
+            <i class="fas fa-flask"></i> 
+            <span>Curso Básico</span>
+        </div>
+        <h1>Metodología<br>de la <span>Investigación</span></h1>
+        <div class="hero-desc">
+            Construye conocimiento con rigor científico. Accede a módulos, recursos interactivos y herramientas para tu tesis o proyecto.
+        </div>
+        <div class="quote">
+            “La investigación es formalizar lo que intuitivamente ya sabemos pero con evidencia.”
+            <div class="quote-author"></div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <div class="form-header">
+            <h2>Bienvenido(a)</h2>
+            <p>Ingresa con tu cuenta institucional o privada</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Usuario" required autocomplete="username">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Contraseña" required autocomplete="current-password">
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox">
+                    <input type="checkbox" id="remember"> <span>Recordar sesión</span>
+                </label>
+               
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-arrow-right-to-bracket"></i> Ingresar al aula
+            </button>
+
+           
+
+           
+        </form>
+    </div>
+</div>
+
+<script>
+    function showMessage(title, text, isError = false) {
+        const toast = document.createElement('div');
+        toast.style.position = 'fixed';
+        toast.style.bottom = '20px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = isError ? '#c0392b' : '#1f6e43';
+        toast.style.color = 'white';
+        toast.style.padding = '0.8rem 1.8rem';
+        toast.style.borderRadius = '40px';
+        toast.style.fontFamily = "'Inter', sans-serif";
+        toast.style.fontSize = '0.85rem';
+        toast.style.fontWeight = '500';
+        toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+        toast.style.backdropFilter = 'blur(4px)';
+        toast.style.zIndex = '9999';
+        toast.style.textAlign = 'center';
+        toast.style.pointerEvents = 'none';
+        toast.innerText = `${title}: ${text}`;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 2800);
+    }
+
+    const VALID_USER = "investigacion";
+    const VALID_PASS = "finlay";
+
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const remember = document.getElementById('remember').checked;
+
+        if (!username || !password) {
+            showMessage('Campos requeridos', 'Por favor ingresa usuario y contraseña', true);
+            return;
+        }
+
+        if (username === VALID_USER && password === VALID_PASS) {
+            showMessage('Acceso correcto', `Bienvenido al curso, ${username}. ${ remember ? 'Sesión recordada.' : '' }`, false);
+            // REDIRECCIÓN DESCOMENTADA A index2.html
+            setTimeout(() => { 
+                window.location.href = "bienvenida.html"; 
+            }, 1500);
+        } else {
+            showMessage('Acceso denegado', 'Usuario o contraseña incorrectos', true);
+        }
+    });
+
+    // Eventos simulados (social, registro, olvido)
+    document.getElementById('googleMock')?.addEventListener('click', () => showMessage('Demo', 'Autenticación social en desarrollo', false));
+    document.getElementById('githubMock')?.addEventListener('click', () => showMessage('Demo', 'Autenticación social en desarrollo', false));
+    document.getElementById('linkedinMock')?.addEventListener('click', () => showMessage('Demo', 'Autenticación social en desarrollo', false));
+    document.getElementById('registerLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showMessage('Registro', 'Por favor contacta con la coordinación del curso para obtener credenciales', false);
+    });
+    document.querySelector('.forgot-link')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showMessage('Recuperación', 'Enviamos un enlace a tu correo institucional (simulación)', false);
+    });
+</script>
+</body>
+</html>

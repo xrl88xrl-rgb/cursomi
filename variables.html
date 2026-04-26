@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Variables en la Investigación | Guía completa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f7fc;
+      color: #1a2a3f;
+      line-height: 1.5;
+      padding: 0;
+    }
+
+    /* Header académico */
+    .header-var {
+      background: linear-gradient(115deg, #0b2b5c 0%, #0e2a4a 100%);
+      color: white;
+      padding: 40px 20px 30px 20px;
+      text-align: center;
+      border-bottom: 6px solid #ffaa33;
+    }
+
+    .header-var h1 {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header-var p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    /* Cards de contenido */
+    .card-theme {
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      overflow: hidden;
+      transition: transform 0.2s;
+      border: 1px solid #e2edf7;
+    }
+
+    .card-theme:hover {
+      transform: translateY(-3px);
+    }
+
+    .card-title {
+      background: #f0f6fe;
+      padding: 18px 28px;
+      border-left: 8px solid #ffaa33;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b2b5c;
+    }
+
+    .card-body {
+      padding: 28px 32px;
+      font-size: 1.05rem;
+    }
+
+    .highlight {
+      background: #eef3fc;
+      padding: 20px;
+      border-radius: 24px;
+      margin: 20px 0;
+      border-left: 5px solid #0b5e7e;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    th {
+      background-color: #0b2b5c;
+      color: white;
+      padding: 14px 12px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    td {
+      border: 1px solid #dce7f0;
+      padding: 12px;
+      vertical-align: top;
+    }
+
+    .badge-var {
+      background: #ffaa3320;
+      color: #a45d00;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-block;
+    }
+
+    .ejemplo-caja {
+      background: #fef7e0;
+      border-radius: 24px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      border: 1px solid #ffdfaa;
+    }
+
+    .btn-download {
+      background: #0b2b5c;
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.2s;
+      margin-top: 12px;
+      border: none;
+    }
+
+    .btn-download:hover {
+      background: #1e4a7a;
+      transform: scale(1.02);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: #081c34;
+      color: #cbdbe0;
+      text-align: center;
+      padding: 28px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .header-var h1 {
+        font-size: 2rem;
+      }
+      .card-title {
+        font-size: 1.4rem;
+      }
+      .card-body {
+        padding: 20px;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        display: none;
+      }
+      td {
+        display: block;
+        padding: 12px;
+        border: none;
+        border-bottom: 1px solid #e2e8f0;
+        position: relative;
+      }
+      td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 140px;
+        color: #0b2b5c;
+      }
+    }
+
+    .glosario {
+      background: #e9f2f9;
+      border-radius: 28px;
+      padding: 20px 28px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-var">
+  <h1>📊 Variables en la Investigación</h1>
+  <p>Definición, clasificación, operacionalización y ejemplos prácticos para tu tesis o proyecto científico</p>
+  <div style="margin-top: 20px;">
+    <span class="badge-var">Metodología de la Investigación</span>
+    <span class="badge-var">Guía completa</span>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Tarjeta 1: ¿Qué es una variable? -->
+  <div class="card-theme">
+    <div class="card-title">🔍 1. ¿Qué es una variable?</div>
+    <div class="card-body">
+      <p>Una <strong>variable</strong> es una propiedad, característica o atributo que <strong>puede variar</strong> (adquirir diferentes valores) y que es susceptible de ser <strong>medido u observado</strong> en una investigación. En ciencia, no trabajamos con conceptos fijos, sino con elementos que cambian entre personas, contextos o momentos.</p>
+      <div class="highlight">
+        <strong>📌 Ejemplo cotidiano:</strong> El "peso" es una variable porque puede tener distintos valores (60 kg, 75 kg, 90 kg). La "estatura", la "edad" o el "nivel de satisfacción" también son variables.
+      </div>
+      <p>Sin variables, no podríamos establecer relaciones de causa-efecto ni hacer análisis estadístico. Toda investigación cuantitativa y muchas cualitativas giran en torno a variables.</p>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2: Clasificación fundamental (Según función) -->
+  <div class="card-theme">
+    <div class="card-title">🧩 2. Clasificación según su función en la investigación</div>
+    <div class="card-body">
+      <p>En un estudio hipotético-deductivo, las variables se organizan en tres grandes roles:</p>
+      <table>
+        <thead>
+          <tr><th>Tipo de variable</th><th>Rol</th><th>Ejemplo concreto</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Tipo"><strong>📌 Independiente (VI)</strong></td><td data-label="Rol">Es la <strong>causa presunta</strong> o el factor que el investigador manipula o selecciona para observar su efecto.</td><td data-label="Ejemplo">“Tipo de método de estudio” (tradicional vs. cooperativo).</td></tr>
+          <tr><td data-label="Tipo"><strong>🎯 Dependiente (VD)</strong></td><td data-label="Rol">Es el <strong>efecto o resultado</strong> que se mide para ver cómo es afectado por la VI.</td><td data-label="Ejemplo">“Calificación promedio en examen final”.</td></tr>
+          <tr><td data-label="Tipo"><strong>⚙️ Interviniente / Moderadora</strong></td><td data-label="Rol">Factores que pueden influir en la relación entre VI y VD (controladas o medidas).</td><td data-label="Ejemplo">“Motivación del estudiante” o “nivel de estrés”.</td></tr>
+        </tbody>
+      </table>
+      <div class="ejemplo-caja">
+        <strong>🔬 Ejemplo integrado:</strong> Un investigador estudia si un <em>nuevo fármaco</em> (VI) reduce la <em>presión arterial</em> (VD). La <em>edad</em> y <em>actividad física</em> son variables intervinientes.
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta 3: Según su naturaleza (cuantitativas / cualitativas) -->
+  <div class="card-theme">
+    <div class="card-title">📏 3. Según su naturaleza: cuantitativas vs. cualitativas</div>
+    <div class="card-body">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 10px;">
+        <div style="flex:1; background:#eef2f9; padding:20px; border-radius:24px;">
+          <h3 style="color:#0b2b5c;">🔢 Cuantitativas</h3>
+          <p>Se expresan <strong>numéricamente</strong> y permiten operaciones aritméticas. A su vez se dividen en:</p>
+          <ul style="margin-left: 20px; margin-top: 12px;">
+            <li><strong>Discretas:</strong> valores enteros (ej. número de hijos).</li>
+            <li><strong>Continuas:</strong> pueden tomar cualquier valor decimal (ej. altura, tiempo).</li>
+          </ul>
+        </div>
+        <div style="flex:1; background:#fef5e8; padding:20px; border-radius:24px;">
+          <h3 style="color:#b45f06;">🗣️ Cualitativas (o categóricas)</h3>
+          <p>Expresan <strong>categorías o atributos</strong> no numéricos, aunque pueden codificarse.</p>
+          <ul style="margin-left: 20px; margin-top: 12px;">
+            <li><strong>Nominales:</strong> sin orden (ej. género, estado civil).</li>
+            <li><strong>Ordinales:</strong> categorías con orden (ej. nivel socioeconómico: bajo, medio, alto).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta 4: El proceso de operacionalización (clave) -->
+  <div class="card-theme">
+    <div class="card-title">⚙️ 4. Operacionalización de variables: lo abstracto a lo medible</div>
+    <div class="card-body">
+      <p>No podemos medir conceptos abstractos como <em>“inteligencia emocional”</em> o <em>“calidad de vida”</em> directamente. La <strong>operacionalización</strong> consiste en descomponer la variable en dimensiones e indicadores empíricos.</p>
+      <div class="highlight">
+        <strong>📐 Pasos básicos:</strong><br>
+        1. Definición conceptual (basada en teorías).<br>
+        2. Dimensiones (aspectos que componen la variable).<br>
+        3. Indicadores (elementos concretos y medibles).<br>
+        4. Escala de medición (nominal, ordinal, intervalo o razón).
+      </div>
+      <h3 style="margin-top: 20px;">📋 Tabla de operacionalización (formato estándar)</h3>
+      <table style="margin-top: 10px;">
+        <thead><tr><th>Variable</th><th>Definición conceptual</th><th>Dimensiones</th><th>Indicadores</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Variable"><strong>Estrés académico</strong></td><td data-label="Definición">Respuesta fisiológica y psicológica ante demandas escolares</td><td data-label="Dimensiones">Síntomas físicos, preocupaciones, afrontamiento</td><td data-label="Indicadores">Frecuencia de cefaleas, horas de sueño, escala SISCO</td></tr>
+          <tr><td data-label="Variable"><strong>Rendimiento laboral</strong></td><td data-label="Definición">Eficacia y calidad en tareas asignadas</td><td data-label="Dimensiones">Productividad, eficiencia, creatividad</td><td data-label="Indicadores">Número de metas alcanzadas, evaluación 360°</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tarjeta 5: Ejemplo práctico paso a paso -->
+  <div class="card-theme">
+    <div class="card-title">📝 5. Ejemplo completo: "Horas de estudio y calificaciones"</div>
+    <div class="card-body">
+      <p><strong>Problema:</strong> ¿Afecta la cantidad de horas de estudio (VI) en el rendimiento académico (VD)?</p>
+      <ul>
+        <li><strong>V. Independiente:</strong> Tiempo de estudio semanal (horas) → Escala de razón (0 a 40 horas).</li>
+        <li><strong>V. Dependiente:</strong> Calificaciones obtenidas → promedio numérico de 0 a 100.</li>
+        <li><strong>Variables intervinientes:</strong> nivel de inteligencia, calidad del sueño, alimentación.</li>
+      </ul>
+      <div class="ejemplo-caja">
+        <strong>🧪 Hipótesis:</strong> “A mayor número de horas de estudio semanal, mayor será el promedio de calificaciones en estudiantes universitarios”.
+        <br><br>
+        <strong>🔎 Instrumento sugerido:</strong> Cuestionario de registro de horas + actas de calificaciones.
+      </div>
+      <button class="btn-download" id="btnExportarPDF" onclick="window.print();">
+        🖨️ Guardar como PDF / Imprimir esta guía
+      </button>
+      <p style="margin-top: 14px; font-size: 0.85rem;">💡 (Al hacer clic en "Guardar como PDF", puedes elegir destino y crear un archivo completo de esta página)</p>
+    </div>
+  </div>
+
+  <!-- Tarjeta 6: Errores comunes y consejos -->
+  <div class="card-theme">
+    <div class="card-title">⚠️ Errores frecuentes al definir variables</div>
+    <div class="card-body">
+      <ul style="margin-left: 26px;">
+        <li><strong>❌ Confundir el tema con variable:</strong> “La deserción escolar” es un tema; las variables son “ingreso familiar”, “apoyo parental”, “asistencia”.</li>
+        <li><strong>❌ Usar definiciones muy vagas:</strong> “Medir la calidad” sin especificar indicadores concretos.</li>
+        <li><strong>❌ No operacionalizar:</strong> Dejar conceptos abstractos sin traducirlos a datos observables.</li>
+        <li><strong>✅ Consejo experto:</strong> Siempre pregunta: ¿cómo mediré o registraré esta variable? ¿Qué instrumento usaré?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tarjeta 7: Glosario rápido -->
+  <div class="card-theme">
+    <div class="card-title">📖 Glosario esencial de variables</div>
+    <div class="card-body glosario">
+      <ul style="list-style-type: none;">
+        <li><strong>▪ Variable latente:</strong> No observable directamente, se infiere (ej. autoestima).</li>
+        <li><strong>▪ Variable dicotómica:</strong> Solo dos categorías (sí/no, hombre/mujer).</li>
+        <li><strong>▪ Variable politómica:</strong> Más de dos categorías (nivel educativo: básico, medio, superior).</li>
+        <li><strong>▪ Escala de razón:</strong> Números con cero absoluto (ingresos, edad).</li>
+        <li><strong>▪ Escala de intervalo:</strong> No tiene cero real (temperatura en Celsius).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tarjeta extra: Referencias recomendadas reales 
+    <div class="card-title">📚 Fuentes y PDFs recomendados (para ampliar)</div>
+    <div class="card-body">
+      <p>Estos son materiales reales que puedes encontrar fácilmente en Google Académico o repositorios universitarios:</p>
+      <ul>
+        <li><strong>“Variables y su operacionalización”</strong> - Revista Archivo Médico de Camagüey (descargable vía SciELO).</li>
+        <li><strong>“Metodología de la investigación” (Hernández Sampieri)</strong> - Capítulo sobre hipótesis y variables.</li>
+        <li><strong>“Operacionalización de variables” (Universidad Nacional Mayor de San Marcos)</strong> - Guía práctica en PDF.</li>
+        <li><strong>Consejo:</strong> Busca en Google: <em>"Operacionalización de variables PDF universidad"</em> y obtendrás documentos académicos confiables.</li>
+      </ul>
+      <div class="highlight" style="margin-top: 20px;">
+        💡 <strong>Actividad sugerida:</strong> Elige un tema de tu interés (ej. “efecto del ejercicio en la salud mental”) y redacta una tabla de operacionalización con: VI, VD, dimensiones e indicadores.
+      </div>
+    </div>
+  </div>-->
+  <div class="card-theme">
+</div>
+
+<footer>
+  <p>📘 Guía completa sobre Variables en Investigación | Material didáctico para estudiantes de metodología</p>
+  <p style="margin-top: 8px;">© 2025 - Curso de Metodología de la Investigación | Puedes imprimir o guardar como PDF</p>
+</footer>
+
+<script>
+  // Añadir funcionalidad adicional (pequeño detalle para mejorar la lectura en tablas responsive)
+  document.querySelectorAll('td').forEach(td => {
+    if(td.getAttribute('data-label') === null) {
+      const headerText = td.parentElement.parentElement.querySelector('th')?.innerText;
+      if(headerText && td.cellIndex !== undefined) {
+        const headers = Array.from(td.parentElement.parentElement.parentElement.querySelectorAll('th'));
+        if(headers[td.cellIndex]) {
+          td.setAttribute('data-label', headers[td.cellIndex].innerText);
+        }
+      }
+    }
+  });
+
+  // Botón de imprimir más robusto: estilo para exportación
+  const btnPrint = document.getElementById('btnExportarPDF');
+  if(btnPrint) {
+    btnPrint.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Mensaje amigable adicional al copiar o visualizar
+  console.log('Guía de variables cargada — contenido completo para estudio');
+</script>
+</body>
+</html>
+```

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calificaciones - Aula Virtual</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.daxtaTables.min.css">
+    <link rel="stylesheet" href="jquery.dataTables.min.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+    }
+    header {
+      background-color: #01023f;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      margin-right: 20px;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+    }
+    header h2 {
+      color: aliceblue;
+      margin-top: 10px;
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 20px;
+      min-height: 400px;
+    }
+    footer {
+      background-color: #01023f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    #gradesTable {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="img/logo.png" alt="Logo">
+  <div style="text-align: center; flex-grow: 1;">
+    <h1>Curso de Metodología de la Investigación</h1>
+    <h2>Bienvenido, <span id="nombre"></span></h2>
+  </div>
+</header>
+
+<nav>
+  <a href="inicio.html">Inicio</a>
+  <a href="aula.html">Módulos</a>
+  <a href="comentarios.html">Comentarios</a>
+  <a href="calificaciones.html">Calificaciones</a>
+    <a href="biblio.html">Bibliografía</a>
+
+    <a href="index.html">Salir</a>
+</nav>
+
+<section>
+  <h2>Calificaciones</h2>
+  <div id="userView">
+    <p>Aquí puedes ver las calificaciones de todos los estudiantes del curso.</p>
+    <p id="noGrades" style="display:none;">No hay calificaciones aún.</p>
+    <table id="gradesTable" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Módulo</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div id="adminPanel" style="display:none;">
+    <h3>Panel de Administrador - Gestionar Calificaciones</h3>
+    <table id="adminGradesTable" class="display" style="width:100%; margin-bottom:20px;">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Módulo</th>
+          <th>Nota</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <h4 id="formTitle">Agregar Calificación</h4>
+    <input type="text" id="name" placeholder="Nombre" required>
+    <input type="text" id="surnames" placeholder="Apellidos" required>
+    <label for="moduloSelect">Módulo:</label>
+    <select id="moduloSelect" required>
+      <option value="">Seleccione un módulo</option>
+      <option value="Módulo 1: Introducción a la Investigación">Módulo 1: Conceptos básicos en Metodología de investigación</option>
+      <option value="Módulo 2: Metodología Científica">Módulo 2: El problema e hipotesis de la Investigación</option>
+      <option value="Módulo 3: Análisis de Datos">Módulo 3: El marco teórico</option>
+      <option value="Módulo 4: Redacción de Artículos">Módulo 4: Objetivos</option>
+       <option value="Módulo 4: Redacción de Artículos">Módulo 5: Diseño Metodológico</option>
+         <option value="Módulo 4: Redacción de Artículos">Módulo 6: Tecnicas de recolección de la información</option>
+           <option value="Módulo 4: Redacción de Artículos">Módulo 7 : Resultados</option>
+             <option value="Módulo 4: Redacción de Artículos">Módulo 8 :Inteligencia Artificial y la Investigación</option>
+             <option value="Módulo 4: Redacción de Artículos">Proyecto Final</option>
+    </select>
+    <input type="number" id="calificacion" placeholder="Nota" required min="0" max="100">
+    <button id="actionButton" onclick="addOrUpdateGrade()">Agregar</button>
+    <button onclick="cancelEdit()">Cancelar</button>
+  </div>
+</section>
+
+<footer>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
+    <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+      Plataforma de Aprendizaje Virtual | Diseñado por Sander
+    </p>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+  let editingIndex = -1;
+
+  // Check if user is logged in
+  const usuario = localStorage.getItem('usuario');
+  if (!usuario) {
+    window.location.href = 'index.html';
+  }
+
+  document.getElementById('nombre').textContent = usuario;
+
+  $(document).ready(function() {
+    if (usuario === 'admin') {
+      document.getElementById('userView').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      loadGlobalGrades();
+    } else {
+      loadGlobalGrades();
+    }
+  });
+
+  function loadGlobalGrades() {
+    let grades = JSON.parse(localStorage.getItem('global_grades')) || [];
+
+    if (usuario !== 'admin') {
+      if (grades.length === 0) {
+        document.getElementById('noGrades').style.display = 'block';
+        document.getElementById('gradesTable').style.display = 'none';
+      } else {
+        document.getElementById('noGrades').style.display = 'none';
+        document.getElementById('gradesTable').style.display = 'table';
+        let data = grades.map(g => [g.name, g.surnames, g.module, g.grade]);
+        if ($.fn.DataTable.isDataTable('#gradesTable')) {
+          $('#gradesTable').DataTable().destroy();
+        }
+        $('#gradesTable').DataTable({
+          data: data,
+          columns: [
+            { title: 'Nombre' },
+            { title: 'Apellidos' },
+            { title: 'Módulo' },
+            { title: 'Nota' }
+          ],
+          language: {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "",
+            "infoEmpty": "",
+            "infoFiltered": "",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Primero",
+              "last": "Último",
+              "next": "Siguiente",
+              "previous": "Anterior"
+            }
+          },
+          info: false
+        });
+      }
+    } else {
+      let data = grades.map((g, index) => [g.name, g.surnames, g.module, g.grade, '<button onclick="editGrade(' + index + ')">Editar</button>']);
+      if ($.fn.DataTable.isDataTable('#adminGradesTable')) {
+        $('#adminGradesTable').DataTable().destroy();
+      }
+      $('#adminGradesTable').DataTable({
+        data: data,
+        columns: [
+          { title: 'Nombre' },
+          { title: 'Apellidos' },
+          { title: 'Módulo' },
+          { title: 'Nota' },
+          { title: 'Acciones' }
+        ],
+        language: {
+          "lengthMenu": "Mostrar _MENU_ registros por página",
+          "zeroRecords": "No se encontraron resultados",
+          "info": "",
+          "infoEmpty": "",
+          "infoFiltered": "",
+          "search": "Buscar:",
+          "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": "Siguiente",
+            "previous": "Anterior"
+          }
+        },
+        info: false
+      });
+    }
+  }
+
+  function addOrUpdateGrade() {
+    let name = document.getElementById('name').value.trim();
+    let surnames = document.getElementById('surnames').value.trim();
+    let module = document.getElementById('moduloSelect').value;
+    let grade = parseInt(document.getElementById('calificacion').value);
+    if (!name || !surnames || !module || isNaN(grade)) {
+      alert('Completa todos los campos correctamente');
+      return;
+    }
+    let grades = JSON.parse(localStorage.getItem('global_grades')) || [];
+    if (editingIndex === -1) {
+      grades.push({name, surnames, module, grade});
+    } else {
+      grades[editingIndex] = {name, surnames, module, grade};
+      editingIndex = -1;
+    }
+    localStorage.setItem('global_grades', JSON.stringify(grades));
+    clearForm();
+    loadGlobalGrades();
+  }
+
+  function editGrade(index) {
+    let grades = JSON.parse(localStorage.getItem('global_grades')) || [];
+    let g = grades[index];
+    document.getElementById('name').value = g.name;
+    document.getElementById('surnames').value = g.surnames;
+    document.getElementById('moduloSelect').value = g.module;
+    document.getElementById('calificacion').value = g.grade;
+    document.getElementById('formTitle').textContent = 'Editar Calificación';
+    document.getElementById('actionButton').textContent = 'Actualizar';
+    editingIndex = index;
+  }
+
+  function cancelEdit() {
+    clearForm();
+    editingIndex = -1;
+  }
+
+  function clearForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('surnames').value = '';
+    document.getElementById('moduloSelect').value = '';
+    document.getElementById('calificacion').value = '';
+    document.getElementById('formTitle').textContent = 'Agregar Calificación';
+    document.getElementById('actionButton').textContent = 'Agregar';
+  }
+
+  // Make functions global
+  window.loadGlobalGrades = loadGlobalGrades;
+  window.addOrUpdateGrade = addOrUpdateGrade;
+  window.editGrade = editGrade;
+  window.cancelEdit = cancelEdit;
+</script>
+</body>
+</html>

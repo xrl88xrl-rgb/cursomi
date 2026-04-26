@@ -1,0 +1,85 @@
+/* General */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Navigation */
+nav {
+  background-color: #34495e;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #1abc9c;
+}
+
+/* Content Section */
+#contenido {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Module Cards */
+.modulo {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.modulo h3 {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+.modulo ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.modulo p {
+  margin-top: 10px;
+}
+
+/* Button */
+button {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #16a085;
+}
