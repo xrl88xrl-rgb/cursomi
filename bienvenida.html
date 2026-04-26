@@ -2,72 +2,391 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Bienvenida al Curso</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metodología de la Investigación | Bienvenida</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fb;
+      line-height: 1.6;
+      color: #2c3e50;
+    }
+
+    /* ===== ENCABEZADO ===== */
+    .header {
+      background: linear-gradient(135deg, #01023f 0%, #020364 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .header-title {
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .header-title h1 {
+      color: white;
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    .header-title p {
+      color: #89c2d9;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== NAVEGACIÓN ===== */
+    .nav-bar {
+      background-color: #1a1a2e;
+      padding: 12px 30px;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      border-bottom: 3px solid #1abc9c;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      background-color: #1abc9c;
+      color: #01023f;
+    }
+
+    /* ===== CONTENIDO PRINCIPAL ===== */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 25px;
+    }
+
+    .welcome-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    .welcome-title {
+      color: #01023f;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #1abc9c;
+      padding-left: 20px;
+    }
+
+    .intro-text {
+      font-size: 1.1rem;
+      color: #34495e;
+      margin-bottom: 25px;
+    }
+
+    /* Tarjetas de expectativas */
+    .expectativas {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .card {
+      background: #f8f9fc;
+      border-radius: 15px;
+      padding: 20px;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid #e0e7f0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .card .emoji {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      color: #01023f;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #5a6e7f;
+    }
+
+    /* Sección especial para médicos */
+    .medicos-section {
+      background: linear-gradient(135deg, #e8f4f8 0%, #d4eaf0 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .medicos-section h3 {
+      color: #01023f;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .medicos-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .medico-item {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid #1abc9c;
+    }
+
+    .medico-item strong {
+      color: #01023f;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Cita destacada */
+    .quote {
+      background: #01023f;
+      color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .quote p {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .quote-author {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Despedida */
+    .closing {
+      background: #f0fdf4;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid #b8e6c8;
+      margin-top: 20px;
+    }
+
+    .closing p {
+      margin-bottom: 10px;
+    }
+
+    .closing .success-message {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #1a6e3f;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: linear-gradient(135deg, #01023f 0%, #020364 100%);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    .footer .copyright {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* Usuario activo */
+    .user-greeting {
+      background: #1abc9c;
+      color: #01023f;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .welcome-card {
+        padding: 25px;
+      }
+      .welcome-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Encabezado con imagen lateral -->
-  <header style="background-color: #01023f; display: flex; align-items: center; padding: 20px;">
-    <img src="img/logo.png" alt="Logo" style="width: 100px; height: 100px; margin-right: 20px;">
-    <div style="text-align: center; flex-grow: 1;">
-      <h1 style="color: white; margin: 0;">Curso de Metodología de la Investigación</h1>
 
+  <!-- ===== ENCABEZADO ===== -->
+  <header class="header">
+    <div class="logo">
+      🩺
+    </div>
+    <div class="header-title">
+      <h1>📚 Curso de Metodología de la Investigación</h1>
+      <p>Formación en investigación científica para profesionales de la salud</p>
+    </div>
+    <div class="user-greeting" id="userGreeting">
+      👤 Cargando...
     </div>
   </header>
 
-  <!-- Menú de navegación -->
-  <nav>
-    <a href="aula.html">Inicio</a>
-
-    <a href="index.html">Salir</a>
+  <!-- ===== NAVEGACIÓN ===== -->
+  <nav class="nav-bar">
+    <a href="aula.html">🏠 Inicio</a>
+    <a href="index.html">🚪 Salir</a>
   </nav>
 
-  <!-- Contenido de bienvenida -->
-  <section id="contenido" style="padding: 30px; max-width: 900px; margin: auto;">
-    <h2>🎓 Bienvenida al Curso</h2>
-    <p>¡Bienvenido al fascinante mundo de la investigación académica!</p>
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main class="container">
+    <div class="welcome-card">
+      <h2 class="welcome-title">🎓 Bienvenida al Curso</h2>
+      
+      <p class="intro-text">¡Bienvenido al fascinante mundo de la investigación académica!</p>
+      
+      <p>Este curso ha sido diseñado para brindarte las herramientas teóricas y prácticas necesarias para comprender, planificar y ejecutar procesos de investigación rigurosos y significativos. A lo largo de los próximos módulos, explorarás los fundamentos epistemológicos, los enfoques metodológicos, las técnicas de recolección de datos y los criterios de análisis que sustentan el trabajo investigativo en diversas disciplinas.</p>
 
-    <p>Este curso ha sido diseñado para brindarte las herramientas teóricas y prácticas necesarias para comprender, planificar y ejecutar procesos de investigación rigurosos y significativos. A lo largo de los próximos módulos, explorarás los fundamentos epistemológicos, los enfoques metodológicos, las técnicas de recolección de datos y los criterios de análisis que sustentan el trabajo investigativo en diversas disciplinas.</p>
+      <!-- Sección de expectativas -->
+      <h3 style="margin-top: 30px; color: #01023f;">📌 ¿Qué puedes esperar?</h3>
+      <div class="expectativas">
+        <div class="card">
+          <span class="emoji">📘</span>
+          <h4>Lecturas clave</h4>
+          <p>Introducción a los conceptos esenciales de la investigación</p>
+        </div>
+        <div class="card">
+          <span class="emoji">🧠</span>
+          <h4>Actividades reflexivas</h4>
+          <p>Aplica lo aprendido en casos prácticos</p>
+        </div>
+        <div class="card">
+          <span class="emoji">📝</span>
+          <h4>Evaluaciones</h4>
+          <p>Consolida tu dominio de los contenidos</p>
+        </div>
+      </div>
 
-    <h3>¿Qué puedes esperar?</h3>
-    <ul>
-      <li>📘 Lecturas clave que te introducirán en los conceptos esenciales</li>
-      <li>🧠 Actividades que te invitarán a reflexionar y aplicar lo aprendido</li>
-      <li>📝 Evaluaciones que consolidarán tu dominio de los contenidos</li>
-    </ul>
+      <p>Este espacio virtual será tu aula, tu laboratorio y tu punto de encuentro con el conocimiento. Te animamos a participar activamente, compartir tus ideas, y sobre todo, a cuestionar y explorar con curiosidad.</p>
+    </div>
 
-    <p>Este espacio virtual será tu aula, tu laboratorio y tu punto de encuentro con el conocimiento. Te animamos a participar activamente, compartir tus ideas, y sobre todo, a cuestionar y explorar con curiosidad.</p>
+    <!-- Sección especial para médicos -->
+    <div class="medicos-section">
+      <h3>🩺 ¿Por qué esto es crucial para ustedes como médicos?</h3>
+      <div class="medicos-grid">
+        <div class="medico-item">
+          <strong>📖 Para ser consumidores críticos del conocimiento</strong>
+          <p>Diariamente, journals, conferencias y colegas les presentan nuevos estudios. ¿Cómo saben si sus resultados son válidos? ¿Si la metodología fue la adecuada? ¿Si se pueden aplicar a sus pacientes? Este curso les dará las herramientas para responder esas preguntas y tomar decisiones basadas en la mejor evidencia disponible.</p>
+        </div>
+        <div class="medico-item">
+          <strong>⚕️ Para mejorar la práctica clínica diaria</strong>
+          <p>Cada vez que se preguntan "¿Habrá una forma mejor de hacer esto?", "¿Este tratamiento realmente funciona como dicen?" están formulando la semilla de una pregunta de investigación. Aprenderán a cultivar esa semilla y transformar su curiosidad clínica en un proyecto estructurado.</p>
+        </div>
+        <div class="medico-item">
+          <strong>🌍 Para contribuir al avance de la medicina</strong>
+          <p>La comunidad médica es una red de conocimiento colaborativo. Este curso les enseñará a sistematizar su experiencia, medirla, analizarla y comunicarla de manera que enriquezca el acervo médico global.</p>
+        </div>
+        <div class="medico-item">
+          <strong>🏆 Para liderar con autoridad</strong>
+          <p>El médico que entiende metodología de la investigación es un líder natural. Habla con base en datos, diseña proyectos para mejorar los procesos y guía a sus equipos hacia la calidad y mejora continua.</p>
+        </div>
+      </div>
+      <p style="margin-top: 20px; font-weight: 500;">⭐ Este curso es mucho más que un requisito académico: es la llave para pasar de ser aplicador pasivo a generador activo del conocimiento.</p>
+      <p style="margin-top: 15px;">Los invitamos a abordar cada módulo con la misma curiosidad y rigor con que abordan un diagnóstico complejo. Traigan sus dudas, sus experiencias y sus ganas de cambiar la medicina.</p>
+      <p style="margin-top: 15px; font-size: 1.1rem; font-weight: bold; color: #01023f;">Bienvenidos a la metodología de la investigación. Bienvenidos al futuro de la medicina basada en evidencia.</p>
+    </div>
 
-    <p> ¿Por qué es esto tan crucial para ustedes como médicos?
-Para ser consumidores críticos del conocimiento: Diariamente, journals, conferencias y colegas les presentan nuevos estudios. ¿Cómo saben si sus resultados son válidos? ¿Si la metodología fue la adecuada? ¿Si se pueden aplicar a sus pacientes? Este curso les dará las herramientas para responder esas preguntas y tomar decisiones basadas en la mejor evidencia disponible, no en la más reciente o la más publicitada.
-Para mejorar la práctica clínica diaria: Cada vez que se preguntan "¿Habrá una forma mejor de hacer esto?", "¿Este tratamiento realmente funciona como dicen?" o "¿Por qué mis pacientes no responden como en el estudio?", están formulando la semilla de una pregunta de investigación. Aprenderán a cultivar esa semilla, a transformar su curiosidad clínica en un proyecto estructurado que pueda generar respuestas reales y mejorar los outcomes de sus pacientes.
-Para contribuir al avance de la medicina: La comunidad médica es una red de conocimiento colaborativo. Lo que ustedes aprenden en su práctica es invaluable. Este curso les enseñará a sistematizar esa experiencia, a medirla, analizarla y comunicarla de manera que enriquezca el acervo médico global. Su próximo caso clínico, su observación única, podría ser la chispa que inicie una nueva línea de investigación que salve incontables vidas.
-Para liderar con autoridad: El médico que entiende metodología de la investigación es un líder natural. Habla con base en datos, diseña proyectos para mejorar los procesos de su hospital y guía a sus equipos con una brújula que apunta siempre hacia la calidad y la mejora continua.
-Este curso es mucho más que un requisito académico; es la llave que les abrirá la puerta para pasar de ser aplicadores pasivos del conocimiento a ser generadores activos del mismo.
+    <!-- Cita inspiradora -->
+    <div class="quote">
+      <p>“Investigar no es repetir lo sabido, sino descubrir lo que aún no se ha dicho.”</p>
+      <div class="quote-author">— Pensamiento científico —</div>
+    </div>
 
-Los invitamos a abordar cada módulo con la misma curiosidad y rigor con que abordan un diagnóstico complejo. Traigan sus dudas, sus experiencias y sus ganas de cambiar para bien la manera en que practicamos la medicina.
+    <!-- Mensaje de cierre -->
+    <div class="closing">
+      <p>🎯 <strong>¡Mucho éxito en este recorrido académico!</strong></p>
+      <p class="success-message">Estamos aquí para acompañarte en cada paso.</p>
+      <p style="margin-top: 15px; font-size: 0.9rem;">📌 Recuerda: cada pregunta que hagas es el primer paso de un gran descubrimiento.</p>
+    </div>
+  </main>
 
-Bienvenidos a la metodología de la investigación. Bienvenidos al futuro de la medicina basada en evidencia.</p>
-
-    <blockquote style="font-style: italic; color: #555; border-left: 4px solid #1abc9c; padding-left: 10px;">
-      “Investigar no es repetir lo sabido, sino descubrir lo que aún no se ha dicho.”
-    </blockquote>
-
-    <p>¡Mucho éxito en este recorrido académico! Estamos aquí para acompañarte en cada paso.</p>
-  </section>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
+      <p class="copyright">Plataforma de Aprendizaje Virtual | Universidad Autónoma</p>
+    </div>
+  </footer>
 
   <!-- Script para mostrar nombre del usuario -->
   <script>
-    document.getElementById('nombre').textContent = localStorage.getItem('usuario') || 'Invitado';
+    const usuario = localStorage.getItem('usuario') || 'Invitado';
+    const userGreeting = document.getElementById('userGreeting');
+    if (userGreeting) {
+      userGreeting.innerHTML = `👤 ${usuario}`;
+    }
   </script>
-
-  <footer style="background-color: #01023f; color: white; text-align: center; padding: 20px; margin-top: 40px;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
-      <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
-        Plataforma de Aprendizaje Virtual | Universidad Autónoma
-      </p>
-    </div>
-  </footer>
 </body>
 </html>
