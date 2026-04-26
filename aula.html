@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,24 +12,48 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      background: #f0f2f5;
-      color: #1e2a3e;
-      line-height: 1.5;
-      font-size: 18px; /* BASE MÁS GRANDE */
+    /* ===== MODO OSCURO/CLARO ===== */
+    :root {
+      --bg-primary: #f0f2f5;
+      --bg-card: #ffffff;
+      --text-primary: #1e2a3e;
+      --text-secondary: #4a5568;
+      --border-color: #e2e8f0;
+      --header-bg: linear-gradient(135deg, #01023f 0%, #0a0c5e 100%);
+      --nav-bg: #ffffff;
+      --accent: #ffb347;
+      --accent-dark: #e69500;
     }
 
-    /* HEADER MODERNO */
+    [data-theme="dark"] {
+      --bg-primary: #121212;
+      --bg-card: #1e1e2e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a0a0b0;
+      --border-color: #333344;
+      --header-bg: linear-gradient(135deg, #00001f 0%, #050538 100%);
+      --nav-bg: #1a1a2a;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      font-size: 18px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* HEADER */
     .header-modern {
-      background: linear-gradient(135deg, #01023f 0%, #0a0c5e 100%);
+      background: var(--header-bg);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       padding: 20px 40px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      border-bottom: 3px solid #ffb347;
+      border-bottom: 3px solid var(--accent);
     }
 
     .logo-area {
@@ -44,7 +69,6 @@
       background: rgba(255,255,255,0.1);
       border-radius: 50%;
       padding: 6px;
-      transition: transform 0.2s;
     }
 
     .header-text {
@@ -54,248 +78,352 @@
 
     .header-text h1 {
       color: white;
-      font-size: 2.2rem;    /* TÍTULO PRINCIPAL MÁS GRANDE */
-      letter-spacing: -0.3px;
+      font-size: 2rem;
       margin: 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    }
-
-    .welcome-link {
-      text-decoration: none;
     }
 
     .welcome-name {
       color: #ffdd99;
       margin-top: 10px;
-      font-size: 1.4rem;    /* NOMBRE USUARIO MÁS GRANDE */
+      font-size: 1.2rem;
       font-weight: 600;
-      transition: color 0.2s;
     }
 
-    /* NAV BAR - LETRAS GRANDES Y ESPACIOS */
+    /* TOOLBAR (tema, búsqueda) */
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .theme-toggle, .search-toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .theme-toggle:hover, .search-toggle:hover {
+      background: var(--accent);
+      transform: scale(1.05);
+    }
+
+    /* Barra de búsqueda flotante */
+    .search-bar {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: var(--bg-card);
+      border-radius: 50px;
+      padding: 8px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 1001;
+      border: 1px solid var(--accent);
+    }
+    .search-bar input {
+      padding: 10px;
+      width: 250px;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 1rem;
+      outline: none;
+    }
+    .search-bar.show {
+      display: flex;
+    }
+
+    /* NAV */
     .nav-modern {
-      background: #ffffff;
+      background: var(--nav-bg);
       padding: 12px 24px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 999;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #e0e7ef;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .nav-modern a {
-      padding: 12px 24px;
-      font-weight: 700;
-      font-size: 1.1rem;    /* MENÚ MÁS GRANDE */
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      color: #01023f;
+      color: var(--text-primary);
       border-radius: 50px;
-      transition: all 0.2s ease;
-      letter-spacing: 0.3px;
-      background: #f8faff;
+      transition: 0.2s;
     }
 
     .nav-modern a:hover {
-      background: #01023f;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: var(--accent);
+      color: #01023f;
     }
 
-    /* CONTENIDO PRINCIPAL */
+    /* Dashboard de progreso */
+    .progress-dashboard {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 20px 30px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-stats {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .progress-bar-container {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .progress-bar {
+      height: 12px;
+      background: var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #ff8c00);
+      width: 0%;
+      border-radius: 10px;
+      transition: width 0.5s;
+    }
+
+    /* Calendario de entregas */
+    .deadlines-card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-left: 5px solid #e74c3c;
+    }
+
+    .deadlines-card h3 {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .deadline-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .deadline-date {
+      background: #e74c3c20;
+      padding: 4px 12px;
+      border-radius: 20px;
+      color: #e74c3c;
+      font-size: 0.85rem;
+    }
+
+    /* Módulos */
     .contenido-wrapper {
       max-width: 1400px;
       margin: 30px auto;
       padding: 0 25px;
     }
 
-    /* TARJETAS DE MÓDULOS (MODERNAS Y VISUALES) */
     .modulo-card {
-      background: #ffffff;
+      background: var(--bg-card);
       border-radius: 32px;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s;
     }
 
     .modulo-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-3px);
     }
 
     .modulo-header {
-      background: linear-gradient(115deg, #f8faff 0%, #ffffff 100%);
-      padding: 24px 32px 16px 32px;
-      border-bottom: 2px solid #e9edf4;
+      padding: 20px 28px 12px 28px;
+      border-bottom: 2px solid var(--border-color);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .modulo-header h3 {
-      font-size: 2rem;      /* NÚMERO DE MÓDULO GRANDE */
-      color: #01023f;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+      font-size: 1.6rem;
+      color: var(--accent);
     }
 
-    .badge-modulo {
-      background: #ffb34720;
-      color: #c45c00;
-      padding: 6px 16px;
-      border-radius: 60px;
-      font-size: 1rem;
-      font-weight: 700;
-      margin-left: 12px;
+    .toggle-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s;
     }
 
     .modulo-body {
-      padding: 24px 32px 32px 32px;
+      padding: 0 28px 28px 28px;
+      display: none;
+    }
+    .modulo-body.open {
+      display: block;
     }
 
-    .modulo-body h2 {
-      font-size: 1.6rem;    /* subtítulos de cada módulo más grandes */
-      margin-bottom: 16px;
-    }
-
-    /* RECURSOS - BOTONES/LINKS MÁS LEGIBLES */
     .recursos-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      margin: 24px 0 24px 0;
+      gap: 12px;
+      margin: 20px 0;
     }
 
     .recurso-link {
-      background: #f1f4fa;
-      border-radius: 60px;
-      padding: 10px 24px;
+      background: var(--bg-primary);
+      border-radius: 40px;
+      padding: 8px 20px;
       text-decoration: none;
-      color: #01023f;
-      font-weight: 600;
-      font-size: 1rem;      /* enlaces de recursos legibles */
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid #e2e8f2;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      transition: 0.2s;
     }
 
     .recurso-link:hover {
-      background: #01023f;
-      color: white;
-      border-color: #01023f;
-      transform: scale(1.02);
+      background: var(--accent);
+      color: #01023f;
     }
 
-    /* CAJA DE EVALUACIÓN */
+    /* Checklist de tarea */
+    .task-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+      padding: 8px;
+      background: var(--bg-primary);
+      border-radius: 12px;
+    }
+    .task-checkbox input {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .task-checkbox.completed {
+      opacity: 0.7;
+      text-decoration: line-through;
+    }
+
     .eval-box {
-      background: #fef7e0;
-      border-left: 6px solid #ffb347;
-      padding: 22px 28px;
-      border-radius: 28px;
-      margin: 28px 0 24px 0;
-      font-size: 1rem;
-    }
-
-    .eval-box h4 {
-      font-size: 1.4rem;
-      color: #2c3e66;
-      margin-bottom: 14px;
-    }
-
-    .eval-box p, .eval-box li {
-      font-size: 1rem;
-      line-height: 1.5;
+      background: var(--bg-primary);
+      border-left: 5px solid var(--accent);
+      padding: 18px;
+      border-radius: 20px;
+      margin: 20px 0;
     }
 
     .btn-subir {
       background: linear-gradient(95deg, #01023f, #1f2b8c);
       border: none;
       color: white;
-      padding: 14px 32px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      border-radius: 60px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
       cursor: pointer;
-      transition: all 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin: 12px 0 16px 0;
+      transition: 0.2s;
     }
 
-    .btn-subir:hover {
-      background: linear-gradient(95deg, #1f2b8c, #01023f);
-      transform: scale(1.02);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .consulta-docente {
-      background: #eef3fc;
+    /* Foro rápido */
+    .quick-forum {
+      background: var(--bg-card);
       border-radius: 24px;
-      padding: 20px 26px;
-      margin-top: 28px;
-      border: 1px solid #cbdff2;
-      font-size: 1rem;
+      padding: 20px;
+      margin-top: 30px;
+      border: 1px solid var(--border-color);
     }
 
-    .consulta-docente h4 {
-      color: #01023f;
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-    .consulta-docente p {
-      font-size: 1rem;
+    .forum-message {
+      background: var(--bg-primary);
+      padding: 12px;
+      border-radius: 16px;
+      margin: 10px 0;
     }
 
-    hr {
-      margin: 24px 0;
-      border: 0;
-      height: 2px;
-      background: linear-gradient(to right, #ddd, transparent);
+    .forum-input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      margin-top: 10px;
     }
 
+    /* Footer */
     footer {
       background: #01023f;
-      color: #f0f2f5;
+      color: white;
       text-align: center;
-      padding: 32px 20px;
-      margin-top: 60px;
-      font-size: 1rem;
-      border-top: 5px solid #ffb347;
+      padding: 30px;
+      margin-top: 50px;
     }
 
-    /* responsive */
-    @media (max-width: 760px) {
-      body {
-        font-size: 16px;
-      }
-      .header-modern {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-      }
-      .nav-modern a {
-        padding: 10px 16px;
-        font-size: 0.95rem;
-      }
-      .modulo-header h3 {
-        font-size: 1.6rem;
-      }
-      .modulo-body {
-        padding: 20px;
-      }
-      .contenido-wrapper {
-        padding: 0 16px;
-      }
-      .recurso-link {
-        font-size: 0.9rem;
-        padding: 8px 18px;
-      }
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      .header-modern { flex-direction: column; text-align: center; }
+      .progress-dashboard { flex-direction: column; }
+      .modulo-header h3 { font-size: 1.3rem; }
+    }
+
+    /* Botón flotante */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--accent);
+      color: #01023f;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -303,244 +431,318 @@
 
 <header class="header-modern">
   <div class="logo-area">
-    <img src="img/logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/90?text=Logo'">
+    <img src="img/logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/90?text=📚'">
   </div>
   <div class="header-text">
-    <h1>📖 Curso de Metodología de la Investigación</h1>
-    <a href="bienvenida.html" class="welcome-link">
-      <div class="welcome-name">✨ Bienvenido, <span id="nombre"></span> ✨</div>
-    </a>
+    <h1>📖 Metodología de la Investigación</h1>
+    <div class="welcome-name">✨ Bienvenido, <span id="nombre"></span> ✨</div>
   </div>
-  <div style="width: 90px;"></div>
+  <div class="toolbar">
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+    <button class="search-toggle" id="searchToggle">🔍</button>
+  </div>
 </header>
+
+<div class="search-bar" id="searchBar">
+  <input type="text" id="searchInput" placeholder="Buscar módulos o recursos..." autocomplete="off">
+</div>
 
 <nav class="nav-modern">
   <a href="bienvenida.html">🏠 Inicio</a>
-  <a href="aula.html">📚 Módulos</a>
-  <a href="calificaciones.html">⭐ Calificaciones</a>
-  <a href="comentarios.html">💬 Comentarios</a>
-  <a href="biblio.html">📖 Bibliografía</a>
-  <a id="usuarios-link" href="usuarios.html" style="display:none;">👥 Usuarios</a>
+  <a href="#" onclick="filterModules('todos')">📚 Todos</a>
+  <a href="#" onclick="filterModules('pendientes')">⏳ Pendientes</a>
+  <a href="#" onclick="filterModules('completados')">✅ Completados</a>
   <a href="index.html">🚪 Salir</a>
 </nav>
 
-<div class="contenido-wrapper" id="contenido">
-  <!-- Contenido dinámico: todos los módulos -->
+<div class="contenido-wrapper">
+  <!-- Dashboard de progreso -->
+  <div class="progress-dashboard">
+    <div class="progress-stats">
+      <div class="stat"><div class="stat-number" id="totalModulos">8</div><div class="stat-label">Módulos</div></div>
+      <div class="stat"><div class="stat-number" id="modulosCompletados">0</div><div class="stat-label">Completados</div></div>
+      <div class="stat"><div class="stat-number" id="puntosTotales">0</div><div class="stat-label">🏆 Puntos</div></div>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="stat-label" style="margin-top: 8px;">Progreso general</div>
+    </div>
+  </div>
+
+  <!-- Calendario de entregas -->
+  <div class="deadlines-card">
+    <h3>📅 Próximas entregas</h3>
+    <div id="deadlinesList"></div>
+  </div>
+
+  <div id="contenido"></div>
+
+  <!-- Foro rápido -->
+  <div class="quick-forum">
+    <h3>💬 Foro de consultas rápidas</h3>
+    <div id="forumMessages"></div>
+    <textarea class="forum-input" id="forumInput" rows="2" placeholder="Escribe tu pregunta o comentario..."></textarea>
+    <button class="btn-subir" style="margin-top: 10px;" onclick="enviarMensaje()">Publicar</button>
+  </div>
 </div>
 
 <footer>
-  <div>
-    <p>&copy; 2025 Curso de Metodología de la Investigación - Todos los derechos reservados</p>
-    <p style="margin-top: 8px; font-size: 0.9rem; opacity: 0.8;">Plataforma de Aprendizaje Virtual | Diseñado por Sander</p>
-  </div>
+  <p>&copy; 2025 Metodología de la Investigación - Todos los derechos reservados</p>
+  <p style="margin-top: 8px; font-size: 0.85rem;">Plataforma de Aprendizaje Virtual</p>
 </footer>
 
-<button id="backToTop" style="position:fixed; bottom:25px; right:25px; background:#01023f; color:white; border:none; border-radius:50px; width:55px; height:55px; font-size:30px; cursor:pointer; box-shadow:0 8px 18px rgba(0,0,0,0.25); z-index:1000; display:none; transition:0.2s;">↑</button>
+<button id="backToTop">↑</button>
 
 <script>
-  // Mostrar nombre del usuario
+  // ========== VARIABLES GLOBALES ==========
+  let tareasCompletadas = JSON.parse(localStorage.getItem('tareasCompletadas')) || {};
+  let puntos = parseInt(localStorage.getItem('puntos')) || 0;
+  let modulosData = [];
+  let filtroActual = 'todos';
+
+  // Nombre usuario
   document.getElementById("nombre").textContent = localStorage.getItem("usuario") || "Invitado";
 
-  // Admin: mostrar enlace usuarios
-  if (localStorage.getItem('role') === 'admin') {
-    document.getElementById('usuarios-link').style.display = 'inline-block';
+  // ========== TEMAS (CLARO/OSCURO) ==========
+  const themeToggle = document.getElementById('themeToggle');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    themeToggle.textContent = isDark ? '🌙' : '☀️';
+  });
+
+  // ========== BÚSQUEDA ==========
+  const searchToggle = document.getElementById('searchToggle');
+  const searchBar = document.getElementById('searchBar');
+  const searchInput = document.getElementById('searchInput');
+  searchToggle.addEventListener('click', () => searchBar.classList.toggle('show'));
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll('.modulo-card').forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(term) ? '' : 'none';
+    });
+  });
+
+  // ========== FILTRAR MÓDULOS ==========
+  function filterModules(tipo) {
+    filtroActual = tipo;
+    document.querySelectorAll('.modulo-card').forEach(card => {
+      const moduloId = card.dataset.id;
+      const completado = tareasCompletadas[`modulo_${moduloId}`];
+      if (tipo === 'pendientes' && completado) card.style.display = 'none';
+      else if (tipo === 'completados' && !completado) card.style.display = 'none';
+      else card.style.display = '';
+    });
   }
 
-  // Función que genera TODOS los módulos VISIBLES con textos más grandes
-  function mostrarModulosCompletos() {
+  // ========== GENERAR MÓDULOS ==========
+  function generarModulos() {
     const contenedor = document.getElementById("contenido");
-    let html = `<div style="margin-bottom: 30px;"><h2 style="font-size: 2.2rem; color: #01023f; border-left: 10px solid #ffb347; padding-left: 25px;">📌 Módulos del Curso</h2><p style="color:#2c3e66; margin: 12px 0 0 35px; font-size:1.1rem;">Recursos, lecturas, evaluaciones y consulta docente.</p></div>`;
-
-    // MÓDULO 1
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>📚 Módulo 1 <span class="badge-modulo">Conceptos básicos</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background: #1b5e20; color: white; padding: 8px 22px; border-radius: 60px; display: inline-block; font-size: 1.5rem;">🔍 Conceptos básicos en Metodología de investigación</h2>
+    const modulos = [
+      { id: 1, titulo: "Conceptos básicos", badge: "Fundamentos", 
+        contenido: `<h2>🔍 Conceptos básicos en Metodología</h2>
           <div class="recursos-grid">
-            <a href="libros/metodologia1.pdf" class="recurso-link">📘 Fundamentos científicos</a>
-            <a href="libros/clase%201%20.pdf" class="recurso-link">📑 Introducción a la Metodología</a>
-            <a href="Qué es y para qué sirve la introducción.pdf" class="recurso-link">✍️ Cómo hacer la introducción</a>
-            <a href="clases/clase1.pdf" class="recurso-link">🎥 Conferencia 1 Introductoria</a>
+            <a href="#" class="recurso-link">📘 Fundamentos científicos</a>
+            <a href="#" class="recurso-link">📑 Introducción a la Metodología</a>
           </div>
           <div class="eval-box">
-            <h4>📝 Evaluación Modular</h4>
-            <p>Elabore un <strong>ensayo</strong> sobre uno de los siguientes temas:</p>
-            <ul style="margin-left: 26px; margin-top: 10px;">
-              <li>• Ética en la Investigación</li>
-              <li>• La investigación científica como proceso</li>
-              <li>• Mapa conceptual sobre metodología</li>
-            </ul>
+            <h4>📝 Evaluación</h4>
+            <p>Elabore un ensayo sobre Ética en la Investigación</p>
           </div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
-        </div>
-      </div>
-    `;
-
-    // MÓDULO 2 - PROBLEMA E HIPÓTESIS
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>📚 Módulo 2 <span class="badge-modulo">Problema e Hipótesis</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">🎯 El problema e hipótesis de la Investigación</h2>
+          <button class="btn-subir" onclick="alert('Redirigiendo al formulario')">📤 Subir Evaluación</button>`,
+        tareas: ["Leer fundamentos", "Ver video introductorio", "Completar ensayo"] },
+      { id: 2, titulo: "Problema e Hipótesis", badge: "Formulación",
+        contenido: `<h2>🎯 El problema e hipótesis</h2>
           <div class="recursos-grid">
-            <a href="investigacion1.html" class="recurso-link">🧠 Fundamentos del problema</a>
-            <a href="libros/problema%20capitulo1.pdf" class="recurso-link">📖 El problema y sus partes</a>
-            <a href="libros/EBOOK%20PLANTEAMIENTO%20DEL%20PROBLEMA.pdf" class="recurso-link">📘 Planteamiento del problema</a>
-            <a href="https://drive.google.com/file/d/1HtiCloBzda1U2peCtUlJEIkhixuCwKnx/view?usp=drive_link" class="recurso-link">🌐 El problema (web)</a>
-            <a href="libros/formular%20problema.pdf" class="recurso-link">📌 Formular el problema</a>
-            <a href="clases/hipotesisproblema.pdf" class="recurso-link">🎤 Conferencia 2: Problema e Hipótesis</a>
-            
+            <a href="#" class="recurso-link">📖 El problema y sus partes</a>
+            <a href="#" class="recurso-link">📘 Planteamiento del problema</a>
           </div>
-          <div class="eval-box"><h4>📝 Evaluación</h4><p>Seleccione una opción:</p><p>✔️ Documento Word con su tema de investigación, objeto, campo y problema.<br>✔️ Mapa conceptual del método científico.</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
-        </div>
-      </div>
-    `;
-
-    // MÓDULO 3 - MARCO TEÓRICO
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>📚 Módulo 3 <span class="badge-modulo">Marco Teórico</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📖 El marco teórico</h2>
+          <div class="eval-box"><h4>📝 Evaluación</h4><p>Formule su problema y 3 hipótesis</p></div>
+          <button class="btn-subir" onclick="alert('Subir tarea')">📤 Subir Evaluación</button>`,
+        tareas: ["Definir problema", "Formular hipótesis", "Identificar variables"] },
+      { id: 3, titulo: "Marco Teórico", badge: "Fundamentación",
+        contenido: `<h2>📖 Marco teórico</h2>
           <div class="recursos-grid">
-            <a href="libros/marco%20teorico%2012.pdf" class="recurso-link">📑 El marco teórico</a>
-            <a href="libros/Marco%20teorico%20muy%20bueno%20.pdf" class="recurso-link">📘 Fundamentos avanzados</a>
-            <a href="https://drive.google.com/file/d/1kWyLoLOpzxpIfOi1_6r42Y32PqFFCM_W/view?usp=drive_link" class="recurso-link">🎓 Sampieri - Marco teórico</a>
-            <a href="clases/marco.pdf" class="recurso-link">🎥 Conferencia 3: Marco Teórico</a>
+            <a href="#" class="recurso-link">📑 Fundamentos del marco teórico</a>
           </div>
-          <div class="eval-box"><h4>📌 Evaluación</h4><p>Diseñe un diagrama con las partes fundamentales del marco teórico basado en su investigación.</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
-        </div>
-      </div>
-    `;
+          <div class="eval-box"><h4>📌 Evaluación</h4><p>Diseñe un diagrama del marco teórico</p></div>`,
+        tareas: ["Buscar fuentes", "Organizar citas", "Elaborar diagrama"] },
+      { id: 4, titulo: "Objetivos", badge: "Metas",
+        contenido: `<h2>🎯 Objetivos de investigación</h2>
+          <div class="recursos-grid"><a href="#" class="recurso-link">📌 Tipos de objetivos</a></div>
+          <div class="eval-box"><h4>📝 Evaluación</h4><p>Redacte objetivo general y específicos</p></div>`,
+        tareas: ["Definir objetivo general", "Redactar 3 específicos", "Verificar consistencia"] },
+      { id: 5, titulo: "Diseño Metodológico", badge: "Metodología",
+        contenido: `<h2>📊 Tipos de estudio, población, muestra</h2>
+          <div class="recursos-grid"><a href="#" class="recurso-link">🔬 Tipos de estudios</a></div>
+          <div class="eval-box"><h4>📌 Evaluación</h4><p>Elabore el diseño metodológico completo</p></div>`,
+        tareas: ["Definir tipo de estudio", "Calcular muestra", "Definir variables"] },
+      { id: 6, titulo: "Técnicas de Recolección", badge: "Instrumentos",
+        contenido: `<h2>📝 Técnicas e instrumentos</h2>
+          <div class="recursos-grid"><a href="#" class="recurso-link">📘 Diseño de encuestas</a></div>
+          <div class="eval-box"><h4>📌 Evaluación</h4><p>Diseñe un instrumento de recolección</p></div>`,
+        tareas: ["Diseñar encuesta", "Validar instrumento", "Aplicar prueba piloto"] },
+      { id: 7, titulo: "Análisis de Resultados", badge: "Análisis",
+        contenido: `<h2>📈 Presentación de Resultados</h2>
+          <div class="recursos-grid"><a href="#" class="recurso-link">📘 Métodos estadísticos</a></div>
+          <div class="eval-box"><h4>💡 Evaluación</h4><p>Plan de análisis de datos</p></div>`,
+        tareas: ["Procesar datos", "Crear tablas", "Interpretar resultados"] },
+      { id: 8, titulo: "Proyecto Final", badge: "Trabajo Final",
+        contenido: `<h2>🏆 Informe de Investigación</h2>
+          <div class="recursos-grid"><a href="#" class="recurso-link">📄 Guía informe final</a></div>
+          <div class="eval-box"><h4>🎯 Trabajo Final</h4><p>Presente proyecto completo</p></div>`,
+        tareas: ["Revisar estructura", "Redactar conclusiones", "Entregar informe"] }
+    ];
 
-    // MÓDULO 4 - OBJETIVOS (activado)
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>🎯 Módulo 4 <span class="badge-modulo">Objetivos e Hipótesis</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">Objetivos de la investigación</h2>
-          <div class="recursos-grid">
-            <a href="https://atlasti.com/es/research-hub/objetivos-investigacion" class="recurso-link">📌 Objetivos de la investigación</a>
-            <a href="https://www.redalyc.org/pdf/7217/721778106027.pdf" class="recurso-link">📊 Objetivos Base </a>
-            
-            <a href="https://drive.google.com/file/d/1oi6q1Dn5J5WauzJgeLHpC_tx41wWX6qp/view?usp=drive_link" class="recurso-link">🎤 Conferencia 4: Objetivos</a>
+    let html = '';
+    modulos.forEach(mod => {
+      const completado = tareasCompletadas[`modulo_${mod.id}`] || false;
+      const tareasCompletadasModulo = mod.tareas ? mod.tareas.filter((_, idx) => tareasCompletadas[`modulo_${mod.id}_tarea_${idx}`]).length : 0;
+      const totalTareas = mod.tareas ? mod.tareas.length : 1;
+      const tareasHTML = mod.tareas ? mod.tareas.map((tarea, idx) => `
+        <div class="task-checkbox" data-modulo="${mod.id}" data-tarea="${idx}">
+          <input type="checkbox" onchange="toggleTarea(${mod.id}, ${idx})" ${tareasCompletadas[`modulo_${mod.id}_tarea_${idx}`] ? 'checked' : ''}>
+          <span>${tarea}</span>
+        </div>
+      `).join('') : '';
+
+      html += `
+        <div class="modulo-card" data-id="${mod.id}" data-completado="${completado}">
+          <div class="modulo-header" onclick="toggleModulo(${mod.id})">
+            <h3>📚 Módulo ${mod.id} <span class="badge-modulo">${mod.badge}</span></h3>
+            <span class="toggle-icon" id="toggleIcon_${mod.id}">▼</span>
           </div>
-          <div class="eval-box"><h4>📝 Evaluación</h4><p>✅ Seleccione los enunciados correctos (<a href="objetivos.html" style="font-weight:bold;">ir a test</a>)<br>✅ Formule 3 hipótesis para su tema y defina variables.</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👩‍🏫 Consulta docente</h4><p><strong>Dra.C Enia Ramón Musibay</strong><br>📧 <a href="mailto:musibay576@gmail.com">musibay576@gmail.com</a></p></div>
-        </div>
-      </div>
-    `;
-
-    // MÓDULO 5 - DISEÑO METODOLÓGICO
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>📐 Módulo 5 <span class="badge-modulo">Diseño Metodológico</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📊 Tipos de estudio, población, muestra</h2>
-          <div class="recursos-grid">
-            <a href="libros/html/Tipos%20de%20estudios%20bueno.html" class="recurso-link">🔬 Tipos de estudios</a>
-            <a href="libros/html/Tipos%20de%20estudios%20observacionales%20_%20Noticia%20de%20Bioclever_%20Blog%20de%20Bioclever.html" class="recurso-link">👁️ Estudios observacionales</a>
-            <a href="libros/Clasificacion-de-los-tipos-de-estudio.pdf" class="recurso-link">📂 Clasificación de estudios</a>
-            <a href="https://drive.google.com/file/d/1kWyLoLOpzxpIfOi1_6r42Y32PqFFCM_W/view?usp=drive_link" class="recurso-link">🧪 Tipos de estudio Libro Sampieri</a>
-            <a href="variables.html" class="recurso-link">📈 Variables Bases</a>
-            <a href="https://drive.google.com/file/d/1X0oitOhHBTiALmIHPB8Jp-tW-I8uGTze/view?usp=drive_link" class="recurso-link">📈 Variables estadísticas 1</a>
-            <a href="https://drive.google.com/file/d/1H1CcfOKm4DDIH66Mq0AT02CvxF9myFhn/view?usp=drive_link" class="recurso-link">📈 Variables estadísticas 2</a>
-            
-            <a href="https://drive.google.com/file/d/1v33-aiD3ugZ4-9wq2ijZvJ62jQ-IDEOS/view?usp=drive_link" class="recurso-link">🎥 Conferencia 5: Diseño Metodológico</a>
+          <div class="modulo-body" id="moduloBody_${mod.id}">
+            ${mod.contenido}
+            <div class="task-section">
+              <h4>✅ Lista de tareas</h4>
+              ${tareasHTML}
+            </div>
+            <div class="consulta-docente" style="margin-top: 20px;">
+              <h4>👨‍🏫 Consulta docente</h4>
+              <p>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p>
+            </div>
           </div>
-          <div class="eval-box"><h4>📌 Evaluación</h4><p>Elabore el diseño metodológico: tipo de estudio, población/muestra, variables y consideraciones éticas.</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
         </div>
-      </div>
-    `;
-
-    // MÓDULO 6 - TÉCNICAS DE RECOLECCIÓN
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>📋 Módulo 6 <span class="badge-modulo">Tecnicas para recolección de datos</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📝 Técnicas e instrumentos</h2>
-          <div class="recursos-grid">
-            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/88.%20Tecnicas%20e%20instrumentos%20recolecci%C3%B3n%20de%20datos.pdf" class="recurso-link">📘 Técnicas e instrumentos</a>
-            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/T%C3%A9cnicas-para-investigar-2-Brujas-2014-pdf.pdf" class="recurso-link">📖 Guía práctica</a>
-            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/URL_03_BAS01.pdf" class="recurso-link">📄 Instrumentos validados</a>
-            <a href="RECOLECCION%20INFOREMACION/PLANILLA%20RECOLECCI%C3%93N/a08v13n1.pdf" class="recurso-link">📊 Planillas de recolección</a>
-            <a href="https://drive.google.com/file/d/1UnpxQ6LYBYUBlrnzL7WirbiSZBJewRWa/view?usp=drive_link" class="recurso-link">🎤 Conferencia 6: Técnicas</a>
-          </div>
-          <div class="eval-box"><h4>📌 Evaluación</h4><p>Diseñe un instrumento de recolección de datos (encuesta, entrevista, guía de observación).</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👩‍🏫 Consulta docente</h4><p><strong>Dra.C Enia Ramón Musibay</strong><br>📧 <a href="mailto:musibay576@gmail.com">musibay576@gmail.com</a></p></div>
-        </div>
-      </div>
-    `;
-
-    // MÓDULO 7 - RESULTADOS
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>📊 Módulo 7 <span class="badge-modulo">Análisis y resultados</span></h3></div>
-        <div class="modulo-body">
-          <h2 style="background:#1b5e20; color:white; padding:8px 22px; border-radius:60px; display:inline-block; font-size:1.5rem;">📈 Presentación de Resultados</h2>
-          <div class="recursos-grid">
-            <a href="resultados.html" class="recurso-link">📘 Comunicar resultados</a>
-            <a href="https://drive.google.com/file/d/1k-56OnQraEyocKm0bxtV4Z71Gxg4BKjP/view?usp=drive_link" class="recurso-link">📘 Métodos Sampieri</a>
-            <a href="RECOLECCION%20INFOREMACION/T%C3%A9cnicas%20e%20instrumentos%20de%20recolecci%C3%B3n%20de%20la%20informaci%C3%B3nNueva%20carpeta/T%C3%A9cnicas-para-investigar-2-Brujas-2014-pdf.pdf" class="recurso-link">🔍 Análisis cuali-cuantitativo</a>
-            
-          </div>
-          <div class="eval-box"><h4>💡 Evaluación</h4><p>Elabore un plan de análisis de datos: técnicas, herramientas y presentación de resultados.</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación</button>
-          <div class="consulta-docente"><h4>👨‍🏫 Consulta docente</h4><p><strong>Dr.C René Borges Sandrino</strong><br>📧 <a href="mailto:rbsander97@gmail.com">rbsander97@gmail.com</a></p></div>
-        </div>
-      </div>
-    `;
-
-    // MÓDULO 8 - IA E INVESTIGACIÓN
-    //
-
-
-    // PROYECTO FINAL
-    html += `
-      <div class="modulo-card">
-        <div class="modulo-header"><h3>🏆 Proyecto Final <span class="badge-modulo">Informe de Investigación</span></h3></div>
-        <div class="modulo-body">
-          <div class="recursos-grid">
-            <a href="libros/Par.pdf" class="recurso-link">📄 Guía informe final</a>
-          </div>
-          <div class="eval-box"><h4>🎯 Trabajo Final</h4><p>Presente el borrador completo de su proyecto de investigación (estructura completa según guía).</p></div>
-          <button class="btn-subir" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfPUxX41DWBMV-qg7PTG-ISxmoS3nUEct2v99mDCsodhrfwfw/viewform?usp=header', '_blank')">📤 Subir Evaluación Final</button>
-          <div class="consulta-docente"><h4>🧑‍🏫 Tutoría final</h4><p>Consulte con su profesor asignado para revisión del informe final.</p></div>
-        </div>
-      </div>
-    `;
-
+      `;
+    });
     contenedor.innerHTML = html;
+    actualizarProgreso();
   }
 
-  window.onload = function () {
-    mostrarModulosCompletos();
-  };
-
-  // Back to top
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener("scroll", () => {
-    if (window.pageYOffset > 200) {
-      backToTop.style.display = "flex";
-      backToTop.style.alignItems = "center";
-      backToTop.style.justifyContent = "center";
+  // ========== COLLAPSE MÓDULOS ==========
+  function toggleModulo(id) {
+    const body = document.getElementById(`moduloBody_${id}`);
+    const icon = document.getElementById(`toggleIcon_${id}`);
+    if (body.classList.contains('open')) {
+      body.classList.remove('open');
+      icon.textContent = '▼';
     } else {
-      backToTop.style.display = "none";
+      body.classList.add('open');
+      icon.textContent = '▲';
     }
-  });
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  }
+
+  // ========== TAREAS Y PROGRESO ==========
+  function toggleTarea(moduloId, tareaIdx) {
+    const key = `modulo_${moduloId}_tarea_${tareaIdx}`;
+    tareasCompletadas[key] = !tareasCompletadas[key];
+    
+    // Calcular si todas las tareas del módulo están hechas
+    const modulo = document.querySelector(`.modulo-card[data-id="${moduloId}"]`);
+    const checkboxes = modulo.querySelectorAll(`.task-checkbox input`);
+    let todas = true;
+    checkboxes.forEach(cb => { if (!cb.checked) todas = false; });
+    tareasCompletadas[`modulo_${moduloId}`] = todas;
+    
+    localStorage.setItem('tareasCompletadas', JSON.stringify(tareasCompletadas));
+    actualizarProgreso();
+  }
+
+  function actualizarProgreso() {
+    let completados = 0;
+    for (let i = 1; i <= 8; i++) {
+      if (tareasCompletadas[`modulo_${i}`]) completados++;
+    }
+    const porcentaje = (completados / 8) * 100;
+    document.getElementById('modulosCompletados').textContent = completados;
+    document.getElementById('progressFill').style.width = `${porcentaje}%`;
+    
+    // Actualizar puntos
+    puntos = completados * 10;
+    document.getElementById('puntosTotales').textContent = puntos;
+    localStorage.setItem('puntos', puntos);
+  }
+
+  // ========== CALENDARIO DE ENTREGAS ==========
+  const fechasEntrega = [
+    { modulo: 1, fecha: "2025-05-10", descripcion: "Ensayo Módulo 1" },
+    { modulo: 2, fecha: "2025-05-17", descripcion: "Formulación de problema" },
+    { modulo: 3, fecha: "2025-05-24", descripcion: "Diagrama marco teórico" },
+    { modulo: 4, fecha: "2025-05-31", descripcion: "Objetivos de investigación" },
+    { modulo: 5, fecha: "2025-06-07", descripcion: "Diseño metodológico" },
+    { modulo: 6, fecha: "2025-06-14", descripcion: "Instrumento de recolección" },
+    { modulo: 7, fecha: "2025-06-21", descripcion: "Plan de análisis" },
+    { modulo: 8, fecha: "2025-06-28", descripcion: "Proyecto final" }
+  ];
+
+  function mostrarFechas() {
+    const hoy = new Date();
+    const proximas = fechasEntrega.filter(f => new Date(f.fecha) >= hoy).slice(0, 5);
+    const html = proximas.map(f => `
+      <div class="deadline-item">
+        <span>📌 ${f.descripcion}</span>
+        <span class="deadline-date">${f.fecha}</span>
+      </div>
+    `).join('');
+    document.getElementById('deadlinesList').innerHTML = html || '<p>🎉 No hay entregas pendientes</p>';
+  }
+
+  // ========== FORO RÁPIDO ==========
+  let mensajesForo = JSON.parse(localStorage.getItem('mensajesForo')) || [];
+  function mostrarForo() {
+    const html = mensajesForo.slice(-5).reverse().map(m => `
+      <div class="forum-message">
+        <strong>${m.usuario}</strong> <small style="color:gray">${m.fecha}</small>
+        <p>${m.texto}</p>
+      </div>
+    `).join('');
+    document.getElementById('forumMessages').innerHTML = html || '<p>No hay mensajes aún. ¡Sé el primero en comentar!</p>';
+  }
+  function enviarMensaje() {
+    const input = document.getElementById('forumInput');
+    if (input.value.trim()) {
+      mensajesForo.push({
+        usuario: localStorage.getItem('usuario') || 'Invitado',
+        fecha: new Date().toLocaleString(),
+        texto: input.value
+      });
+      localStorage.setItem('mensajesForo', JSON.stringify(mensajesForo));
+      input.value = '';
+      mostrarForo();
+    }
+  }
+
+  // ========== BOTÓN BACK TO TOP ==========
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => backToTop.style.display = window.pageYOffset > 200 ? "flex" : "none");
+  backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  // ========== INICIALIZAR ==========
+  window.onload = () => {
+    generarModulos();
+    mostrarFechas();
+    mostrarForo();
+  };
+  window.filterModules = filterModules;
+  window.toggleModulo = toggleModulo;
+  window.toggleTarea = toggleTarea;
+  window.enviarMensaje = enviarMensaje;
 </script>
 </body>
 </html>
+
